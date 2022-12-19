@@ -40,12 +40,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $row["id"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
+                        $role="NoRole";
                         if(password_verify($password, $hashed_password)){
                             session_start();
+
+                            if($statement = $pdo->prepare("SELECT role from user_roles WHERE id_user=:id",PDO::PARAM_STR)){
+                                $statement->bindParam(":id",$id);
+                                if($statement->execute()){
+                                    if($statement->rowCount()==1){
+                                        if($line = $statement->fetch()){
+                                            $role=$line['role'];
+                                        }
+                                    }
+                                }
+                            }
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
+                            $_SESSION["role"] = $role;
 
                             header("location: ../pages/welcome.php");
                         }

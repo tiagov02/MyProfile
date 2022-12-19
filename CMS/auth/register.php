@@ -1,6 +1,6 @@
 <?php
 
-require "../db/connection.php";
+require "../DB/connectDB.php";
 $pdo = pdo_connect_mysql();
 
 $username = $password = $confirm_password = "";
