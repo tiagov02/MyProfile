@@ -1,13 +1,18 @@
 <?php
 session_start();
 
+require "../DB/connectDB.php";
+$pdo = pdo_connect_mysql();
+
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: ../pages/welcome.php");
+    //header("location: ../pages/welcome.php");
+    $_SESSION["role"] = getRole($_SESSION["id"],$pdo);
+    echo("<h1>A SUA ROLE É: ".$_SESSION["role"]."</h1>");
     exit;
 }
 
-require "../DB/connectDB.php";
-$pdo = pdo_connect_mysql();
+
+
 
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
@@ -40,28 +45,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $id = $row["id"];
                         $username = $row["username"];
                         $hashed_password = $row["password"];
-                        $role="NoRole";
+                        $role=getRole($id,$pdo);
                         if(password_verify($password, $hashed_password)){
                             session_start();
-                            $rolesql="SELECT id_user, role from user_roles WHERE id_user=:id";
-                            if($statement = $pdo->prepare($rolesql)){
-                                $statement->bindParam(":id", $id,PDO::PARAM_STR);
-                                if($statement->execute()){
-                                    if($statement->rowCount()==1){
-                                        if($line = $statement->fetch()){
 
-                                            $role=$line['role'];
-                                        }
-                                    }
-                                }
-                            }
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["role"] = $role;
+                            echo("<h1>A SUA ROLE É: ". $role."</h1>");
 
-                            header("location: ../pages/welcome.php");
+                            //header("location: ../pages/welcome.php");
                         }
                         else{
 
@@ -82,6 +77,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     unset($pdo);
+}
+
+function getRole($id,$pdo){
+    $role="NoRole";
+    $rolesql="SELECT id_user, role from user_roles WHERE id_user=:id";
+    if($statement = $pdo->prepare($rolesql)){
+        $statement->bindParam(":id", $id,PDO::PARAM_STR);
+        if($statement->execute()){
+            if($statement->rowCount()==1){
+                if($line = $statement->fetch()){
+
+                    $role=$line['role'];
+                }
+            }
+        }
+    }
+    return $role;
 }
 ?>
 
