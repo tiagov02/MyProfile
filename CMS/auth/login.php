@@ -43,12 +43,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $role="NoRole";
                         if(password_verify($password, $hashed_password)){
                             session_start();
-
-                            if($statement = $pdo->prepare("SELECT role from user_roles WHERE id_user=:id",PDO::PARAM_STR)){
-                                $statement->bindParam(":id",$id);
+                            $rolesql="SELECT id_user, role from user_roles WHERE id_user=:id";
+                            if($statement = $pdo->prepare($rolesql)){
+                                $statement->bindParam(":id", $id,PDO::PARAM_STR);
                                 if($statement->execute()){
                                     if($statement->rowCount()==1){
                                         if($line = $statement->fetch()){
+
                                             $role=$line['role'];
                                         }
                                     }
