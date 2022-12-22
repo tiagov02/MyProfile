@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     if(empty(trim($_POST["password"]))){
-        $password_err = "Pelase fill password.";
+        $password_err = "Please fill password.";
     }
     elseif(strlen(trim($_POST["password"])) < 6){
         $password_err = "Password need to be at least 6 chareters.";
