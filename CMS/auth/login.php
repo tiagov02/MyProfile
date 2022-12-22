@@ -7,12 +7,8 @@ $pdo = pdo_connect_mysql();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     //header("location: ../pages/index.php");
     $_SESSION["role"] = getRole($_SESSION["id"],$pdo);
-    echo("<h1>A SUA ROLE É: ".$_SESSION["role"]."</h1>");
     exit;
 }
-
-
-
 
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
