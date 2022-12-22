@@ -5,7 +5,7 @@ require "../DB/connectDB.php";
 $pdo = pdo_connect_mysql();
 
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    //header("location: ../pages/welcome.php");
+    //header("location: ../pages/index.php");
     $_SESSION["role"] = getRole($_SESSION["id"],$pdo);
     echo("<h1>A SUA ROLE É: ".$_SESSION["role"]."</h1>");
     exit;
@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["role"] = $role;
                             echo("<h1>A SUA ROLE É: ". $role."</h1>");
 
-                            //header("location: ../pages/welcome.php");
+                            //header("location: ../pages/index.php");
                         }
                         else{
 

@@ -1,4 +1,4 @@
 <?php
 //header("location: ./personal");
-header("location: ./CMS/auth");
+header("location: ./CMS");
 ?>
