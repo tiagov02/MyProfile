@@ -3,7 +3,7 @@
 require "../../utils/templates.php";
 
 ?>
-
+<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true ): ?>
 <?=template_header('Home')?>
 
 <div class="content">
@@ -12,3 +12,7 @@ require "../../utils/templates.php";
 </div>
 
 <?=template_footer()?>
+<?php else:
+    header(" location: ../auth");
+endif;
+?>
