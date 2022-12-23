@@ -7,7 +7,8 @@ $pdo = pdo_connect_mysql();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     //header("location: ../pages/index.php");
     $_SESSION["role"] = getRole($_SESSION["id"],$pdo);
-    exit;
+    header("location: ../pages/");
+
 }
 
 $username = $password = "";
@@ -43,8 +44,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $hashed_password = $row["password"];
                         $role=getRole($id,$pdo);
                         if(password_verify($password, $hashed_password)){
-                            session_start();
-
 
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
@@ -52,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["role"] = $role;
                             echo("<h1>A SUA ROLE É: ". $role."</h1>");
 
-                            //header("location: ../pages/index.php");
+                            header("location: ../pages/");
                         }
                         else{
 
