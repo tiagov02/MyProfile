@@ -40,16 +40,18 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
             </thead>
             <tbody>
             <!--REPLACE TO THE FOR CICLE-->
-            <?php foreach ($education as $row):?>
-            <tr>
-                <th scope="row"><?=row['id']?></th>
-                <td><?=row['place']?></td>
-                <td><?=row['year_ini']?></td>
-                <td><?=row['year_end']?></td>
-                <td><?=row['description']?></td>
+            <?php if($num_records > 0):
+                foreach ($education as $row):?>
+                    <tr>
+                        <th scope="row"><?=$row['id']?></th>
+                        <td><?=$row['place']?></td>
+                        <td><?=$row['year_ini']?></td>
+                        <td><?=$row['year_end']?></td>
+                        <td><?=$row['description']?></td>
 
-            </tr>
-            <?php endforeach; ?>
+                    </tr>
+                    <?php endforeach; ?>
+            <?php endif;?>
             </tbody>
         </table>
     </div>
