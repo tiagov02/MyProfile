@@ -13,9 +13,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Place</th>
+                <th scope="col">Year of Iniciation</th>
+                <th scope="col">Year of end</th>
+                <th scope="col">Description</th>
             </tr>
             </thead>
             <tbody>
