@@ -1,6 +1,6 @@
 <?php
 
-require "../../utils/templates.php";
+require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
 

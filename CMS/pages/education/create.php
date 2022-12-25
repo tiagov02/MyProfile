@@ -1,5 +1,5 @@
 <?php
-require "../../utils/templates.php";
+require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
 
@@ -27,20 +27,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <?=template_header('Education');?>
-    <div class="content update">
+    <div class="form-group mx-5 my-5">
         <h2>Create language</h2>
         <form action="create.php" method="post">
             <label for="place">Place</label>
-            <input type="text" name="place" placeholder="Viana do Castelo" id="name">
+            <input type="text" name="place" placeholder="Viana do Castelo" id="name" class="form-control">
             <label for="year_ini">Year of start</label>
-            <input type="number" name="level" placeholder="2022" id="year_ini">
+            <input type="number" name="year_ini" placeholder="2022" id="year_ini" class="form-control">
             <label for="year_end">Year of end</label>
-            <input type="number" name="level" placeholder="2022" id="year_end">
+            <input type="number" name="year_end" placeholder="2022" id="year_end" class="form-control">
             <label for="description">Description</label>
-            <input type="text" name="level" placeholder="I LIKE!" id="description">
-            <input type="submit" value="Create">
+            <input type="text" name="description" placeholder="I LIKE!" id="description" class="form-control">
+            <button type="submit" class="btn btn-primary my-4">Submit</button>
         </form>
-        <?php if ($msg): ?>
+        <?php if (isset($msg)): ?>
             <p><?=$msg?></p>
         <?php endif; ?>
     </div>

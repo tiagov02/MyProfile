@@ -1,6 +1,6 @@
 <?php
 
-require "../../utils/templates.php";
+require "../utils/templates.php";
 
 ?>
 <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true ): ?>
