@@ -27,21 +27,22 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
     template_header('Home')
     ?>
 
-    <div>
-        <table class="table">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Place</th>
-                <th scope="col">Year of Iniciation</th>
-                <th scope="col">Year of end</th>
-                <th scope="col">Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--REPLACE TO THE FOR CICLE-->
-            <?php if($num_records > 0):
-                foreach ($education as $row):?>
+    <div class="container my-5">
+        <?php if($num_records > 0):?>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Place</th>
+                    <th scope="col">Year of Iniciation</th>
+                    <th scope="col">Year of end</th>
+                    <th scope="col">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--REPLACE TO THE FOR CICLE-->
+
+                <?php foreach ($education as $row):?>
                     <tr>
                         <th scope="row"><?=$row['id']?></th>
                         <td><?=$row['place']?></td>
@@ -49,11 +50,14 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['year_end']?></td>
                         <td><?=$row['description']?></td>
 
-                    </tr>
-                    <?php endforeach; ?>
-            <?php endif;?>
-            </tbody>
-        </table>
+                        </tr>
+                        <?php endforeach; ?>
+                </tbody>
+            </table>
+
+        <?php else:?>
+        <strong><div class="empty-text">There are no records in education try <a href="create.php">add</a> one</div></strong>
+        <?php endif;?>
     </div>
 
     <div class="pagination">

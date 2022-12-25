@@ -5,7 +5,6 @@ require "../../DB/connectDB.php";
 
 $pdo = pdo_connect_mysql();
 //VER SESSION
-//CORRECT THE VARIABLES DONT SEND TO DB
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if (!empty($_POST)) {
         // Post data not empty insert a new record
@@ -19,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
          * INSERT INTO bd_sir.education (id, place, description, year_ini, year_end)
          */
         $stmt = $pdo->prepare('INSERT INTO education(place, description, year_ini, year_end) VALUES (?, ?, ?, ?)');
-        $stmt->execute([ $place, $description, $year_ini, $year_end]);
+        $stmt->execute([$place, $description, $year_ini, $year_end]);
         // Output message
         $msg = 'Created Successfully!';
     }
