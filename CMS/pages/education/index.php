@@ -37,6 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                     <th scope="col">Year of Iniciation</th>
                     <th scope="col">Year of end</th>
                     <th scope="col">Description</th>
+                    <th scope="col">))</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,6 +50,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['year_ini']?></td>
                         <td><?=$row['year_end']?></td>
                         <td><?=$row['description']?></td>
+                        <td class="actions">
+                            <a href="update.php?id=<?=$row['id']?>" >a<i class="fas fa-pen fa-xs"></i></a>
+                            <a href="delete.php?id=<?=$row['id']?>" >b<i class="fas fa-trash fa-xs"></i></a>
+                        </td>
 
                         </tr>
                         <?php endforeach; ?>
