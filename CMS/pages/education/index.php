@@ -51,7 +51,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['year_end']?></td>
                         <td><?=$row['description']?></td>
                         <td class="actions">
-                            <a href="update.php?id=<?=$row['id']?>" >a<i class="fas fa-pen fa-xs"></i></a>
+                            <a href="update.php?id=<?=$row['id']?>" ><i class="fa">&#xf014;</i></a>
                             <a href="delete.php?id=<?=$row['id']?>" >b<i class="fas fa-trash fa-xs"></i></a>
                         </td>
 
