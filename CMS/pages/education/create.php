@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="year_end">Year of end</label>
             <input type="number" name="year_end" placeholder="2022" id="year_end" class="form-control">
             <label for="description">Description</label>
-            <input type="text" name="description" placeholder="I LIKE!" id="description" class="form-control">
+            <textarea  name="description" placeholder="I LIKE!" id="description" class="form-control" rows="6" cols="10"></textarea>
             <button type="submit" class="btn btn-primary my-4">Submit</button>
         </form>
         <?php if (isset($msg)): ?>

@@ -45,8 +45,10 @@ if (isset($_GET['id'])) {
         <label for="year_end">Year of end</label>
         <input type="number" name="year_end" placeholder="2022" id="year_end" class="form-control" value="<?=$education['year_end']?>">
         <label for="description">Description</label>
-        <textarea  name="description" placeholder="I LIKE!" id="description" class="form-control"><?=$education['description'];?> </textarea>
-        <input type="submit" class="btn btn-primary my-4"></input>
+        <textarea  name="description" placeholder="I LIKE!" id="description" class="form-control" rows="6" cols="10">
+            <?=$education['description'];?>
+        </textarea>
+        <button type="submit" class="btn btn-primary my-4">Submit</button>
     </form>
     <?php if ($msg): ?>
         <p><?=$msg?></p>
