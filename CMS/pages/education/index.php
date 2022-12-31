@@ -49,16 +49,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['place']?></td>
                         <td><?=$row['year_ini']?></td>
                         <td><?=$row['year_end']?></td>
-                        <td><?=$row['description']?></td>
+                        <td ><?=$row['description']?></td>
                         <td class="actions">
-                            <a href="update.php?id=<?=$row['id']?>" ><i class="fa"></i></a>
-                            <a href="delete.php?id=<?=$row['id']?>" >b<i class="fa">&#xf014;</i></a>
+                            <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil"></i></a>
+                            <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
                         </td>
 
                         </tr>
                         <?php endforeach; ?>
                 </tbody>
             </table>
+            <a href="./create.php" class="btn btn-primary">Create a Language</a>
 
         <?php else:?>
         <strong><div class="empty-text">There are no records in education try <a href="create.php">add</a> one</div></strong>
