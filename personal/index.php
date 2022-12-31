@@ -1,4 +1,7 @@
-
+<?php
+require_once './utils/request_data.php';
+$education = getEducationRows();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -108,50 +111,21 @@
             <div class="mt-8 col-sm-12" id="education">
                 <h3 class="d-flex justify-content-center">Education</h3>
                 <div class="timeline-main">
-                    <ul
-                        class="stepper stepper-vertical timeline timeline-animated pl-0">
+                    <ul class="stepper stepper-vertical timeline timeline-animated pl-0">
+                        <?php foreach ($education as $row):?>
                         <li>
                             <a href="#!">
-                    <span class="circle default-color z-depth-1-half"><i class="fas fa-heart" aria-hidden="true"></i
-                        ></span>
+                                <span class="circle default-color z-depth-1-half"><i class="fas fa-heart" aria-hidden="true"></i></span>
                             </a>
                             <div class="step-content z-depth-1 ml-2 p-4">
-                                <h4 class="font-weight-bold">
-                                    Escola Secundária D. Sancho I, Famalicão
-                                </h4>
+                                <h4 class="font-weight-bold"><?=$row['place']?></h4>
                                 <p class="text-muted mt-3">
-                                    <i class="far fa-clock" aria-hidden="true"></i> 2017-2020
+                                    <i class="far fa-clock" aria-hidden="true"></i><?=$row['year_ini']."-".$row['year_end']?>
                                 </p>
-                                <p class="mb-0">
-                                    De 2017 a 2020 estudei na Escola secundária D. Sancho I,
-                                    onde concluí o ensino secundário em 2020
-                                </p>
+                                <p class="mb-0"><?=$row['description']?></p>
                             </div>
                         </li>
-
-                        <li>
-                            <a href="#!">
-                    <span class="circle default-color z-depth-1-half"
-                    ><i class="fas fa-heart" aria-hidden="true"></i
-                        ></span>
-                            </a>
-                            <div class="step-content z-depth-1 ml-2 p-4">
-                                <h4 class="font-weight-bold">
-                                    Escola Superior de Tecnologia e Gestão- Instituto
-                                    Politécnico de Viana do Castelo
-                                </h4>
-                                <p class="text-muted mt-3">
-                                    <i class="far fa-clock" aria-hidden="true"></i>
-                                    2020-Atualidade
-                                </p>
-                                <p class="mb-0">
-                                    Neste encontro-me a concluir o curso de Engenharia
-                                    informática no IPVC, instituição que escolhi no Concurso
-                                    de Acesso! Já trabalhei no âmbito académico com várias
-                                    tecnologias e encontro-me ainda a aprender!
-                                </p>
-                            </div>
-                        </li>
+                        <?php endforeach;?>
                     </ul>
                 </div>
             </div>
