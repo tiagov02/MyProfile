@@ -9,6 +9,7 @@ $education = getEducationRows();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presentention</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
@@ -96,7 +97,7 @@ $education = getEducationRows();
                     <li>Spanish - Middle Level</li>
                 </ul>
             </div>
-            <div class="mt-8 col-sm-6" id="tecnologies">
+            <div class="mt-8 col-sm-12" id="tecnologies">
                 <h3>My Tecnologies</h3>
                 <div class="col-sm-12">
                     <ul>
@@ -120,7 +121,9 @@ $education = getEducationRows();
                             <div class="step-content z-depth-1 ml-2 p-4">
                                 <h4 class="font-weight-bold"><?=$row['place']?></h4>
                                 <p class="text-muted mt-3">
-                                    <i class="far fa-clock" aria-hidden="true"></i><?=$row['year_ini']."-".$row['year_end']?>
+                                    <i class="far fa-clock" aria-hidden="true"></i>
+                                    <!--CORRET THIS CICLE-->
+                                    <?=$row['year_end']!=0? $row['year_ini']."-".$row['year_end'] : $row['year_ini']."-"."Actuality"?>
                                 </p>
                                 <p class="mb-0"><?=$row['description']?></p>
                             </div>
@@ -210,7 +213,6 @@ $education = getEducationRows();
     </div>
     <p class="text-center">&copy; 2022, José Tiago Viana</p>
 </footer>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -20,6 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt = $pdo->prepare('INSERT INTO education(place, description, year_ini, year_end) VALUES (?, ?, ?, ?)');
 
         $stmt->execute([$place, $description, $year_ini, $year_end]);
+
         // Output message
         $msg = 'Created Successfully!';
     }
