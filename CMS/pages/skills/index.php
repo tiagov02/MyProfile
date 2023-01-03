@@ -20,7 +20,7 @@ $stmt->execute();
 $education = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of languages, this is so we can determine whether there should be a next and previous button
-$num_records = $pdo->query('SELECT COUNT(*) FROM education')->fetchColumn();
+$num_records = $pdo->query('SELECT COUNT(*) FROM skills')->fetchColumn();
 ?>
 <?php
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
