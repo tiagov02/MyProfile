@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     if (isset($_GET['confirm'])) {
         if ($_GET['confirm'] == 'yes') {
             // User clicked the "Yes" button, delete record
-            $stmt = $pdo->prepare('DELETE FROM education WHERE id = ?');
+            $stmt = $pdo->prepare('DELETE FROM languages WHERE id = ?');
             $stmt->execute([$_GET['id']]);
             $msg = 'You have deleted the language!';
         } else {
