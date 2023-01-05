@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
     <?php if ($msg): ?>
         <p><?=$msg?></p>
     <?php else: ?>
-        <p>Are you sure you want to delete language #<?=$language['name']?>?</p>
+        <p>Are you sure you want to delete <?=$language['name']?>?</p>
         <div class="yesno">
             <a href="delete.php?id=<?=$language['id']?>&confirm=yes">Yes</a>
             <a href="delete.php?id=<?=$language['id']?>&confirm=no">No</a>
