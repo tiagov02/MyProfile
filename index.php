@@ -12,8 +12,9 @@ $schema = " ";
 while(!feof($file)) {
     $schema = $schema.fgets($file)."  ";
 }
-
+//CREATE THE TABLES IF NOT EXISTS
 $pdo->query($schema);
 
+header("location: ./personal");
 
 ?>
