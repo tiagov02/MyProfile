@@ -1,6 +1,13 @@
 <?php
 require_once './utils/request_data.php';
+require_once '../libraries/MobileDetect.php';
+//OBTAIN THE Data
 $education = getEducationRows();
+
+//detect device type
+$detect = new \Detection\MobileDetect();
+$deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+die('<h1>'.$deviceType.'</h1>');
 ?>
 <!DOCTYPE html>
 <html lang="pt">

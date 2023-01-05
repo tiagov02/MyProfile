@@ -9,6 +9,17 @@ create table if not exists aboutme
     unique (id)
     );
 
+create table if not exists acess
+(
+    id         int auto_increment
+    primary key,
+    deviceType varchar(10)            not null,
+    ip_adress  varchar(100)           not null,
+    date       date default curtime() null,
+    constraint acess_id_uindex
+    unique (id)
+    );
+
 create table if not exists contacts
 (
     id   int auto_increment
@@ -84,4 +95,5 @@ create table if not exists user_roles
     constraint user_roles_users_id_fk
     foreign key (id_user) references users (id)
     );
+
 
