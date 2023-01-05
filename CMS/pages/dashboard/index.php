@@ -2,6 +2,8 @@
 
 require "../utils/templates.php";
 
+session_start();
+
 ?>
 <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true ): ?>
 <?=template_header('Home')?>

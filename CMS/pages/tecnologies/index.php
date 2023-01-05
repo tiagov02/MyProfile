@@ -4,6 +4,8 @@ require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
 
+session_start();
+
 $pdo = pdo_connect_mysql();
 
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;

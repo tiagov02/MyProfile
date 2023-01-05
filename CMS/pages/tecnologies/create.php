@@ -1,7 +1,8 @@
 <?php
 require "../utils/templates.php";
-
 require "../../DB/connectDB.php";
+
+session_start();
 
 $pdo = pdo_connect_mysql();
 

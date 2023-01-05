@@ -3,6 +3,8 @@ require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
 
+session_start();
+
 $pdo = pdo_connect_mysql();
 //VER SESSION
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['role'] ==="Admin"):

@@ -5,6 +5,10 @@ require "../../DB/connectDB.php";
 
 $pdo = pdo_connect_mysql();
 
+
+session_start();
+
+
 $msg = '';
 // Check if the language id exists, for example update.php?id=1 will get the language with the id of 1
 if (isset($_GET['id'])) {

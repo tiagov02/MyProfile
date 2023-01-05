@@ -2,6 +2,8 @@
 require "../utils/templates.php";
 require "../../DB/connectDB.php";
 
+session_start();
+
 $pdo = pdo_connect_mysql();
 $msg = '';
 // Check that the language ID exists
