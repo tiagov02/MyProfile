@@ -89,6 +89,8 @@ $education = getEducationRows();
                     <li>Proactivity</li>
                 </ul>
             </div>
+        </div>
+        <div class="mt-4 container">
             <div class="col-sm-6" id="languages">
                 <h3>Languages</h3>
                 <ul>
@@ -97,6 +99,7 @@ $education = getEducationRows();
                     <li>Spanish - Middle Level</li>
                 </ul>
             </div>
+        </div>
             <div class="mt-8 col-sm-12" id="tecnologies">
                 <h3>My Tecnologies</h3>
                 <div class="col-sm-12">
@@ -122,7 +125,6 @@ $education = getEducationRows();
                                 <h4 class="font-weight-bold"><?=$row['place']?></h4>
                                 <p class="text-muted mt-3">
                                     <i class="far fa-clock" aria-hidden="true"></i>
-                                    <!--CORRET THIS CICLE-->
                                     <?=$row['year_end']!=0? $row['year_ini']."-".$row['year_end'] : $row['year_ini']."-"."Actuality"?>
                                 </p>
                                 <p class="mb-0"><?=$row['description']?></p>

@@ -13,14 +13,12 @@ if (isset($_GET['id'])) {
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (!empty($_POST)) {
             // This part is similar to the create.php, but instead we update a record and not insert
-            $place = isset($_POST['place']) ? $_POST['place'] : '';
-            $description = isset($_POST['description']) ? $_POST['description'] : '';
-            $year_ini = isset($_POST['year_ini']) ? $_POST['year_ini'] : '';
-            $year_end = isset($_POST['year_end']) ? $_POST['year_end'] : '';
+            $name = isset($_POST['name']) ? $_POST['name'] : '';
+            $description = isset($_POST['description']) ? $_POST['level'] : '';
 
             // Update the record
-            $stmt = $pdo->prepare('UPDATE education SET place=?, description=?, year_ini=?,year_end=? WHERE id = ?');
-            $stmt->execute([$place, $description, $year_ini, $year_end, $_GET['id']]);
+            $stmt = $pdo->prepare('UPDATE technologies SET name=?, description=?, WHERE id = ?');
+            $stmt->execute([$name, $description, $_GET['id']]);
             $msg = 'Updated Successfully!';
         }
     }

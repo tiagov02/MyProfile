@@ -1,9 +1,10 @@
 create table if not exists aboutme
 (
-    text      varchar(1000) not null,
-    imagepath varchar(700)  null,
-    id        int auto_increment
+    text       varchar(1000)          null,
+    imagepath  varchar(700)           null,
+    id         int auto_increment
     primary key,
+    updated_on date default curdate() not null,
     constraint aboutme_id_uindex
     unique (id)
     );
@@ -83,3 +84,4 @@ create table if not exists user_roles
     constraint user_roles_users_id_fk
     foreign key (id_user) references users (id)
     );
+
