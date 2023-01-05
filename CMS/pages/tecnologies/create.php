@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <form action="create.php" method="post">
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Asp.net core 6" id="name" class="form-control">
-            <label for="level">Level</label>
+            <label for="description"></label>
             <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10"></textarea>
             <button type="submit" class="btn btn-primary my-4">Submit</button>
         </form>
