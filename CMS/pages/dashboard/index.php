@@ -5,7 +5,9 @@ require "../utils/templates.php";
 session_start();
 
 ?>
-<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true ): ?>
+<?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]): ?>
+    header("Cache-Control: no-cache, must-revalidate");
+
 <?=template_header('Home')?>
 
 <div class="content">
@@ -15,6 +17,7 @@ session_start();
 
 <?=template_footer()?>
 <?php else:
-    header(" location: ../auth");
+    header(" Location: ../auth");
+    die();
 endif;
 ?>

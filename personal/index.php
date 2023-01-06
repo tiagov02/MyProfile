@@ -7,7 +7,6 @@ $education = getEducationRows();
 //detect device type
 $detect = new \Detection\MobileDetect();
 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
-die('<h1>'.$deviceType.'</h1>');
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -89,27 +88,30 @@ die('<h1>'.$deviceType.'</h1>');
                 </p>
 
             </div>
-            <div class="col-sm-6" id="skills">
-                <h3>My Skills</h3>
-                <ul>
-                    <li>Working In Team</li>
-                    <li>Proactivity</li>
-                </ul>
+        </div>
+        <div class="mt-4 container">
+            <div class="row">
+                <div class="col-sm-6" id="skills">
+                    <h3>My Skills</h3>
+                    <ul>
+                        <li>Working In Team</li>
+                        <li>Proactivity</li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6" id="languages">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>Portuguese - Advanced Level</li>
+                        <li>English - Middle level</li>
+                        <li>Spanish - Middle Level</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="mt-4 container">
-            <div class="col-sm-6" id="languages">
-                <h3>Languages</h3>
-                <ul>
-                    <li>Portuguese - Advanced Level</li>
-                    <li>English - Middle level</li>
-                    <li>Spanish - Middle Level</li>
-                </ul>
-            </div>
-        </div>
             <div class="mt-8 col-sm-12" id="tecnologies">
                 <h3>My Tecnologies</h3>
-                <div class="col-sm-12">
                     <ul>
                         <li>Asp.Net(C#)</li>
                         <li>C</li>
@@ -117,8 +119,8 @@ die('<h1>'.$deviceType.'</h1>');
                         <li>JavaScript/TypeScript</li>
                         <li>IONIC-Angular(with TypeScript)</li>
                     </ul>
-                </div>
             </div>
+        </div>
             <div class="mt-8 col-sm-12" id="education">
                 <h3 class="d-flex justify-content-center">Education</h3>
                 <div class="timeline-main">

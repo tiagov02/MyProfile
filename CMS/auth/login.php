@@ -1,5 +1,10 @@
 <?php
 session_start();
+header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 
 require "../DB/connectDB.php";
 $pdo = pdo_connect_mysql();
@@ -7,7 +12,7 @@ $pdo = pdo_connect_mysql();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     //header("location: ../pages/index.php");
     $_SESSION["role"] = getRole($_SESSION["id"],$pdo);
-    header("location: ../pages/");
+    header("location: ../pages/dashboard/index.php");
 
 }
 
@@ -49,9 +54,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["role"] = $role;
-                            echo("<h1>A SUA ROLE É: ". $role."</h1>");
+                            //echo("<h1>A SUA ROLE É: ". $role."</h1>");
 
-                            header("location: ../pages/");
+                            header("Location: ../pages/dashboard");
+                            die();
                         }
                         else{
 
