@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
@@ -6,7 +8,6 @@ require "../../DB/connectDB.php";
 $pdo = pdo_connect_mysql();
 
 
-session_start();
 
 
 $msg = '';
