@@ -1,8 +1,8 @@
 <?php
 session_start();
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){
-    header("location: ./education");
+    header("location: ./dashboard");
 }
 else{
-    header("location: ./auth");
+    header("location: ../auth");
 }

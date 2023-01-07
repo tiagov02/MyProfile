@@ -1,10 +1,13 @@
 create table if not exists aboutme
 (
-    text       varchar(1000)          null,
-    imagepath  varchar(700)           null,
-    id         int auto_increment
+    text        varchar(1000)          null,
+    imagepath   varchar(700)           null,
+    id          int auto_increment
     primary key,
-    updated_on date default curdate() not null,
+    updated_on  date default curdate() not null,
+    name        varchar(100)           null,
+    actual_role varchar(100)           null,
+    email       varchar(100)           null,
     constraint aboutme_id_uindex
     unique (id)
     );

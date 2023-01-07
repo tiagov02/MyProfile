@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["role"] = $role;
                             //echo("<h1>A SUA ROLE É: ". $role."</h1>");
 
-                            header("Location: ../pages/dashboard");
+                            header("Location: ../pages");
                             die();
                         }
                         else{
