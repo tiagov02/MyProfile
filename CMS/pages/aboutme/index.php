@@ -27,6 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST)){
     </div>
     <div class="col-md-6">
         <form action="index.php" method="post">
+            <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10"><?=$aboutme['description']?></textarea>
 
         </form>
     </div>

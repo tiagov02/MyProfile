@@ -6,7 +6,6 @@ require "../utils/templates.php";
 
 ?>
 <?php if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"]): ?>
-    header("Cache-Control: no-cache, must-revalidate");
 
 <?=template_header('Home')?>
 
