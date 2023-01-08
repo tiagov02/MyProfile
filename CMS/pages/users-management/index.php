@@ -65,10 +65,30 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                             ?>
                         </td>
                         <td class="actions">
-                            <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil"></i></a>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
+                                <i class="bi bi-trash"></i>
+                            </button>
                             <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
                         </td>
-
+                        <!-- Modal -->
+                        <div class="modal fade" id="modaldelete<?=$row['id']?>" tabindex="-1" aria-labelledby="delete<?=$row['id']?>" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="delete<?=$row['username']?>">Dou you sure if you want to delete?</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        You've gonna delete this user: <strong><?=$row['username']?></strong>!
+                                        <h5>Please remember that this action is permanent!</h5>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a type="button" class="btn btn-primary" href="delete.php?id=<?=$row['id']?>&confirm=yes">Save changes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

@@ -11,6 +11,7 @@ $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    print_r($_POST);
     if(empty(trim($_POST["username"]))){
         $username_err = "Please fill username.";
     }
@@ -72,7 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
 
             if($stmt->execute()){
+                $id= $pdo->lastInsertId();
+                $pdo->prepare("insert into user_roles(id_user,role) values(?,?)")->execute([$id,$_POST['role']]);
                 echo ("<script>alert(\"You create a user secessfulty\");</script>");
+                header("location: update.php?id=".$id);
             }
             else{
                 echo "Ups! Try again please.";
@@ -93,9 +97,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="insert username here" id="username" class="form-control form-control-lg <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $username_err; ?></span>
+            <!--PWD-->
             <label for="password">Password</label>
             <input type="text" name="password" placeholder="password" id="password" class="form-control form-control-lg <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
+            <!--CONF PQD-->
+            <label for="confirm_password">Password</label>
+            <input type="text" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control form-control-lg <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+            <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             <select class="form-select" aria-label="Default select example" name="role" required>
                 <option selected>Open this select menu</option>
                 <option value="Admin">Admin</option>
