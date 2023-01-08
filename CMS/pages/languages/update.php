@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
             $level = isset($_POST['level']) ? $_POST['level'] : '';
 
             // Update the record
-            $stmt = $pdo->prepare('UPDATE languages SET name=?, level=?, WHERE id = ?');
+            $stmt = $pdo->prepare('UPDATE languages SET name=?, level=? WHERE id = ?');
             $stmt->execute([$name,$level,$_GET['id']]);
             $msg = 'Updated Successfully!';
         }

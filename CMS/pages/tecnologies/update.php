@@ -15,20 +15,20 @@ if (isset($_GET['id'])) {
         if (!empty($_POST)) {
             // This part is similar to the create.php, but instead we update a record and not insert
             $name = isset($_POST['name']) ? $_POST['name'] : '';
-            $description = isset($_POST['description']) ? $_POST['level'] : '';
+            $description = isset($_POST['description']) ? $_POST['description'] : '';
 
             // Update the record
-            $stmt = $pdo->prepare('UPDATE technologies SET name=?, description=?, WHERE id = ?');
+            $stmt = $pdo->prepare('UPDATE technologies SET name=?, description=? WHERE id = ?');
             $stmt->execute([$name, $description, $_GET['id']]);
             $msg = 'Updated Successfully!';
         }
     }
     // Get the language from the languages table
-    $stmt = $pdo->prepare('SELECT * FROM education WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM technologies WHERE id = ?');
     $stmt->execute([$_GET['id']]);
     $technologie = $stmt->fetch(PDO::FETCH_ASSOC);
     if (!$technologie) {
-        exit('Language doesn\'t exist with that ID!');
+        exit('Technologie doesn\'t exist with that ID!');
     }
 } else {
     exit('No ID specified!');

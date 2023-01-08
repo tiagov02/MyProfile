@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Post data not empty insert a new record
         // Check if POST variable "name" exists, if not default the value to blank, basically the same for all variables
         $name = isset($_POST['name']) ? $_POST['name'] : '';
-        $description = isset($_POST['description']) ? $_POST['level'] : '';
+        $description = isset($_POST['description']) ? $_POST['description'] : '';
         // Insert new record into the languages table
 
         $stmt = $pdo->prepare('insert into technologies (name, description) values (?, ?)');
