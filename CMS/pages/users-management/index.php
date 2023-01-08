@@ -13,7 +13,7 @@ $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] :
 $records_per_page = 20;
 
 // Prepare the SQL statement and get records from our languages table, LIMIT will determine the page
-$stmt = $pdo->prepare('SELECT * FROM education ORDER BY id LIMIT :current_page, :record_per_page');
+$stmt = $pdo->prepare('SELECT id,username FROM users ORDER BY id LIMIT :current_page, :record_per_page');
 $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
@@ -35,10 +35,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Place</th>
-                    <th scope="col">Year of Iniciation</th>
-                    <th scope="col">Year of end</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Role</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -48,10 +46,25 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                 <?php foreach ($education as $row):?>
                     <tr>
                         <th scope="row"><?=$row['id']?></th>
-                        <td><?=$row['place']?></td>
-                        <td><?=$row['year_ini']?></td>
-                        <td><?=$row['year_end']?></td>
-                        <td ><?=$row['description']?></td>
+                        <td><?=$row['username']?></td>
+                        <td>
+                            <?php
+                            $role="NoRole";
+                            $rolesql="SELECT id_user, role from user_roles WHERE id_user=:id";
+                            if($statement = $pdo->prepare($rolesql)){
+                                $statement->bindParam(":id", $id,PDO::PARAM_STR);
+                                if($statement->execute()){
+                                    if($statement->rowCount()==1){
+                                        if($line = $statement->fetch()){
+
+                                            $role=$line['role'];
+                                        }
+                                    }
+                                }
+                            }
+                            echo $role;
+                            ?>
+                        </td>
                         <td class="actions">
                             <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil"></i></a>
                             <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
