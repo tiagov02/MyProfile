@@ -22,7 +22,7 @@ $stmt->execute();
 $education = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of languages, this is so we can determine whether there should be a next and previous button
-$num_records = $pdo->query('SELECT COUNT(*) FROM education')->fetchColumn();
+$num_records = $pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();
 ?>
 <?php
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
@@ -52,11 +52,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                             $role="NoRole";
                             $rolesql="SELECT id_user, role from user_roles WHERE id_user=:id";
                             if($statement = $pdo->prepare($rolesql)){
-                                $statement->bindParam(":id", $id,PDO::PARAM_STR);
+                                $statement->bindParam(":id", $row['id'],PDO::PARAM_INT);
                                 if($statement->execute()){
                                     if($statement->rowCount()==1){
                                         if($line = $statement->fetch()){
-
                                             $role=$line['role'];
                                         }
                                     }
