@@ -1,10 +1,11 @@
 <?php
+session_start();
 
 require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
 
-session_start();
+
 
 $pdo = pdo_connect_mysql();
 
@@ -18,15 +19,23 @@ $stmt->bindValue(':current_page', ($page-1)*$records_per_page, PDO::PARAM_INT);
 $stmt->bindValue(':record_per_page', $records_per_page, PDO::PARAM_INT);
 $stmt->execute();
 
+
 // Fetch the records, so we can display them in our template.
-$education = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$skills = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of languages, this is so we can determine whether there should be a next and previous button
 $num_records = $pdo->query('SELECT COUNT(*) FROM skills')->fetchColumn();
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if(!empty($_POST)){
+        $stm= $pdo->prepare("INSERT INTO skills(description) VALUES(?)");
+        $stm->execute([$_POST['description']]);
+        header("location: ./");
+    }
+}
 ?>
 <?php
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
-    template_header('Home')
+    template_header('Home');
     ?>
 
     <div class="container my-5">
@@ -42,23 +51,48 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                 <tbody>
                 <!--REPLACE TO THE FOR CICLE-->
 
-                <?php foreach ($education as $row):?>
+                <?php foreach ($skills as $row):?>
                     <tr>
-                        <th scope="row"><?=$row['id']?></th>
-                        <td><?=$row['place']?></td>
+                        <td scope="row"><?=$row['id']?></td>
+                        <td><?=$row['description']?></td>
                         <td class="actions">
-                            <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil"></i></a>
-                            <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
+                                <i class="bi bi-trash"></i>
+                            </button>
                         </td>
-
                     </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modaldelete<?=$row['id']?>" tabindex="-1" aria-labelledby="delete<?=$row['id']?>" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="delete<?=$row['id']?>">Dou you sure if you want to delete?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    You've gonna delete this skill: <strong><?=$row['description']?></strong>!
+                                    <h5>Please remember this action is permanent!</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-primary" href="delete.php?id=<?=$row['id']?>&confirm=yes">Save changes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <?php endforeach; ?>
                 </tbody>
             </table>
-            <a href="./create.php" class="btn btn-primary">Create a Language</a>
-
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add a skill
+            </button>
         <?php else:?>
-            <strong><div class="empty-text">There are no records in skills try <a href="create.php">add</a> one</div></strong>
+            <strong><div class="empty-text">There are no records in skills</strong>
+            <p></p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add a skill
+            </button>
         <?php endif;?>
     </div>
 
@@ -69,6 +103,27 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
         <?php if ($page*$records_per_page < $num_records): ?>
             <a href="index.php?page=<?=$page+1?>"><i class="fas fa-angle-double-right fa-sm"></i></a>
         <?php endif; ?>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create a new Skill</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="index.php" method="post">
+                    <div class="modal-body">
+                        <label for="description">Name</label>
+                        <input type="text" name="description" placeholder="Proactivity" id="description" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <?=template_footer()?>
 <?php else:
