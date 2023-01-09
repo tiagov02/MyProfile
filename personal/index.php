@@ -203,17 +203,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <?php endforeach;?>
     </div>
 
-    </div>
 
         <div class="my-pd form-color container" id="contactme">
             <form action="index.php" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label ">Name</label>
-                    <input type="text" class="form-control" id="mail" />
+                    <input name="name" type="text" class="form-control" id="name">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label <?=!empty($email_err)? '' : 'is-invalid'?>">Email address</label>
-                    <input type="email" class="form-control" id="email"/>
+                    <input name="email" type="email" class="form-control" id="email"/>
                     <span class="invalid-feedback"><?php echo $email_err; ?></span>
                 </div>
                 <div class="mb-3">
