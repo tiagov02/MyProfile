@@ -9,10 +9,10 @@ $detect = new \Detection\MobileDetect();
 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 $ip = $_SERVER['REMOTE_ADDR'];
 registerNewDevice($deviceType,$ip);
+$email_err='';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!empty($_POST)){
-        $email_err='';
         $email = $_POST['email'];
         $name = !isset($POST['name'])? '' : $_POST['name'];
         $msg = !isset($POST['msg'])? '' : "Sended by: ".$name."\r\n"."Email adress: ".$email."\r\n".$_POST['msg'];
