@@ -6,22 +6,32 @@ function getEducationRows(){
     $pdo = pdo_connect_mysql();
 
     return $pdo->query("SELECT * FROM education order by year_ini")->fetchAll(PDO::FETCH_ASSOC);
-
 }
 
 function getTechRows(){
     $pdo = pdo_connect_mysql();
 
     return $pdo->query("SELECT * FROM technologies order by name")->fetchAll(PDO::FETCH_ASSOC);
-
 }
 
 function getLanguageRows(){
     $pdo = pdo_connect_mysql();
 
     return $pdo->query("SELECT * FROM languages order by name")->fetchAll(PDO::FETCH_ASSOC);
-
 }
+
+function getSkillRows(){
+    $pdo = pdo_connect_mysql();
+
+    return $pdo->query("SELECT * FROM skills order by description")->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getCertificationRows(){
+    $pdo = pdo_connect_mysql();
+
+    return $pdo->query("SELECT * FROM certifications order by title")->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function register_email($from,$name,$msg){
     $headers = "From: jtiagoviana@ipvc.pt" . "\r\n" .
         "CC: jtiagoviana@ipvc.pt"."\r\n".

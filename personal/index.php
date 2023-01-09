@@ -5,6 +5,8 @@ require_once '../libraries/MobileDetect.php';
 $education = getEducationRows();
 $techs = getTechRows();
 $languages = getLanguageRows();
+$skills = getSkillRows();
+$certs = getCertificationRows();
 
 //detect device type
 $detect = new \Detection\MobileDetect();
@@ -22,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $email_err="Please input a valid email";
         }else{
             register_email($email,$name,$msg);
-            echo("<script>'\You send a sucessefully message!\'");
+            echo("<script>\'You send a sucessefully message!\'");
             header("location: ./");
         }
     }
@@ -109,14 +111,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             </div>
         </div>
+    </div>
         <div class="mt-4 container">
             <div class="row">
                 <div class="col-sm-6" id="skills">
                     <h3>My Skills</h3>
+                    <?php foreach ($skills as $skill):?>
                     <ul>
-                        <li>Working In Team</li>
-                        <li>Proactivity</li>
+                        <li><?=$skill['description']?></li>
                     </ul>
+                    <?php endforeach;?>
                 </div>
 
                 <div class="col-sm-6" id="languages">
@@ -134,15 +138,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="accordion" id="accordionExample">
                 <?php foreach ($techs as $tec):?>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <h2 class="accordion-header" id="heading<?=$tec['id']?>">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?=$tec['id']?>" aria-expanded="false" aria-controls="collapse<?=$tec['id']?>">
                             <?=$tec['name']?>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="heading<?=$tec['id']?>" data-bs-parent="#accordionExample" style="">
                         <div class="accordion-body">
                             <div class="row">
-                                <div class="col-2"><img src="../files/<?=$tec['filename']?>"></div>
+                                <div class="col-2"><img src="../files/<?=$tec['filename']?>" alt="<?=$tec['description']?>"></div>
                                 <div class="col-10"><?=$tec['description']?></div>
                             </div>
                         </div>
@@ -150,8 +154,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
                 <?php endforeach;?>
             </div>
-
         </div>
+    <div class="container">
+        <div class="row">
             <div class="mt-8 col-sm-12" id="education">
                 <h3 class="d-flex justify-content-center">Education</h3>
                 <div class="timeline-main">
@@ -174,16 +179,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
             <div class="my-margin-from-form mt-8 col-lg-12" id="certs">
                 <h1 class="d-flex justify-content-center">
                     <strong>Certifications</strong>
                 </h1>
-                <h3>Datacamp</h3>
-                <div class="text-center">
-                    <img src="./assets/imgs/imgCertDatacamp.jpg" class="px-4 img-fluid"/>
-                </div>
             </div>
         </div>
+            <?php foreach ($certs as $cert):?>
+            <div class="row">
+                <div class="my-margin-from-form mt-8 col-lg-12">
+                    <h3><?=$cert['title']?></h3>
+                    <p><?=$cert['description']?></p>
+                    <div class="text-center">
+                        <img src="../files/certifications<?=$cert['imagepath']?>" class="px-4 img-fluid"/>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
+
+    </div>
+
         <div class="my-pd form-color container" id="contactme">
             <form action="index.php" method="post">
                 <div class="mb-3">
