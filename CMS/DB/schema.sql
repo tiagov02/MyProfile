@@ -23,6 +23,17 @@ create table if not exists acess
     unique (id)
     );
 
+create table if not exists certifications
+(
+    id          int auto_increment
+    primary key,
+    imagepath   varchar(1000) not null,
+    description varchar(1000) not null,
+    title       varchar(100)  null,
+    constraint certifications_id_uindex
+    unique (id)
+    );
+
 create table if not exists contacts
 (
     id   int auto_increment
@@ -57,11 +68,38 @@ create table if not exists languages
     unique (name)
     );
 
+create table if not exists messages
+(
+    id      int auto_increment
+    primary key,
+    `from`  varchar(100)           not null,
+    name    varchar(100)           not null,
+    message varchar(1000)          not null,
+    date    date default curdate() null,
+    state   int                    null,
+    constraint messages_id_uindex
+    unique (id)
+    );
+
+create table if not exists replies
+(
+    id         int auto_increment
+    primary key,
+    id_message int                    not null,
+    message    varchar(1000)          not null,
+    date       date default curdate() null,
+    user       varchar(100)           not null,
+    constraint replies_id_uindex
+    unique (id),
+    constraint replies_messages_id_fk
+    foreign key (id_message) references messages (id)
+    );
+
 create table if not exists skills
 (
     id          int auto_increment
     primary key,
-    description int null,
+    description varchar(100) null,
     constraint skills_description_uindex
     unique (description),
     constraint skills_id_uindex
@@ -72,8 +110,9 @@ create table if not exists technologies
 (
     id          int auto_increment
     primary key,
-    name        varchar(100) not null,
-    description varchar(500) null,
+    name        varchar(100)  not null,
+    description varchar(500)  null,
+    filename    varchar(1000) not null,
     constraint technologies_id_uindex
     unique (id),
     constraint technologies_name_uindex

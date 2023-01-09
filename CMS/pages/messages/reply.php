@@ -33,14 +33,14 @@ if(isset($_GET['id'])) {
     }
 }
 else{
-    //header("location: index.php");
+    header("location: index.php");
 }
 template_header('tt');
 ?>
 
 <div class="container-fluid m-1 overflow-auto bg-body-tertiary text-align-center">
     <!--EXTERNAL MSG-->
-    <div class="row p-2">
+    <div class="row p-2 overflow-y-auto">
         <div class="col-1" style="border-right: solid 1px rgb(110, 110, 110);"><i class="bi bi-person-fill"></i></div>
         <div class="col-11">
             <div class="card">
@@ -76,23 +76,21 @@ template_header('tt');
             </div>
         </div>
     <?php endforeach;?>
-
-        <form action="reply.php?id=<?=$_GET['id']?>" method="post">
-            <div class="row py-4 px-1">
-                <div class="col-1"></div>
-                <div class="col-sm-8">
-                    <textarea name="msg" placeholder="message..." id="msg" class="form-control" rows="6" cols="10" required></textarea>
-                </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-primary col-3" type="submit">Send</button>
-                </div>
-
+    <form action="reply.php?id=<?=$_GET['id']?>" method="post">
+        <div class="row py-4 px-1">
+            <div class="col-1"></div>
+            <div class="col-sm-8">
+                <textarea name="msg" placeholder="message..." id="msg" class="form-control" rows="6" cols="10" required></textarea>
             </div>
-        </form>
+            <div class="col-sm-3">
+                <button class="btn btn-primary col-3" type="submit">Send</button>
+            </div>
+        </div>
+    </form>
 </div>
 
     <!--FORM-->
-<div class="container mt-5 bg-body-secondary">
+<div class="container mt-5 bg-body-secondary" >
 
 </div>
 
