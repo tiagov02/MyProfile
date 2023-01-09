@@ -3,6 +3,8 @@ require_once './utils/request_data.php';
 require_once '../libraries/MobileDetect.php';
 //OBTAIN THE Data
 $education = getEducationRows();
+$techs = getTechRows();
+$languages = getLanguageRows();
 
 //detect device type
 $detect = new \Detection\MobileDetect();
@@ -120,24 +122,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="col-sm-6" id="languages">
                     <h3>Languages</h3>
                     <ul>
-                        <li>Portuguese - Advanced Level</li>
-                        <li>English - Middle level</li>
-                        <li>Spanish - Middle Level</li>
+                        <?php foreach ($languages as $lang):?>
+                        <li><?=$lang['name']?> - <?=$lang['level']?></li>
                     </ul>
+                    <?php endforeach;?>
                 </div>
             </div>
         </div>
-        <div class="mt-4 container">
-            <div class="mt-8 col-sm-12" id="tecnologies">
-                <h3>My Tecnologies</h3>
-                    <ul>
-                        <li>Asp.Net(C#)</li>
-                        <li>C</li>
-                        <li>JAVA(With Spring)</li>
-                        <li>JavaScript/TypeScript</li>
-                        <li>IONIC-Angular(with TypeScript)</li>
-                    </ul>
+        <div class="mt-4 container bg-terciary">
+            <h3 class="text-center">My Technologies</h3>
+            <div class="accordion" id="accordionExample">
+                <?php foreach ($techs as $tec):?>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <?=$tec['name']?>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-2"><img src="../files/<?=$tec['filename']?>"></div>
+                                <div class="col-10"><?=$tec['description']?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach;?>
             </div>
+
         </div>
             <div class="mt-8 col-sm-12" id="education">
                 <h3 class="d-flex justify-content-center">Education</h3>
