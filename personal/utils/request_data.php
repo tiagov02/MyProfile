@@ -9,8 +9,8 @@ function getEducationRows(){
 
 }
 function register_email($from,$name,$msg){
-    $headers = "From: webmaster@example.com" . "\r\n" .
-        "CC: somebodyelse@example.com"."\r\n".
+    $headers = "From: jtiagoviana@ipvc.pt" . "\r\n" .
+        "CC: jtiagoviana@ipvc.pt"."\r\n".
         "Reply-To: <jtiagoviana@ipvc.pt>";
     $msg .= "\r\n\nNote that the team will reply in 24h!";
     $pdo = pdo_connect_mysql();

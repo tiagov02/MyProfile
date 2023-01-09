@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Faça upload da imagem</label>
                 <input type="file" class="form-control" id="myfile" name="myfile" accept="image/*" required>
                 <label for="description">Description</label>
-                <textarea  name="description" placeholder="I LIKE!" id="description" class="form-control" rows="6" cols="10"></textarea>
+                <textarea name="description" placeholder="I LIKE!" id="description" class="form-control" rows="6" cols="10"></textarea>
                 <button class="btn btn-primary float-end mt-5" type="submit">Update</button>
             </form>
         </div>
