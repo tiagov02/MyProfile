@@ -7,6 +7,24 @@ $education = getEducationRows();
 //detect device type
 $detect = new \Detection\MobileDetect();
 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
+$ip = $_SERVER['REMOTE_ADDR'];
+registerNewDevice($deviceType,$ip);
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if(!empty($_POST)){
+        $email_err='';
+        $email = $_POST['email'];
+        $name = !isset($POST['name'])? '' : $_POST['name'];
+        $msg = !isset($POST['msg'])? '' : "Sended by: ".$name."\r\n"."Email adress: ".$email."\r\n".$_POST['msg'];
+        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            $email_err="Please input a valid email";
+        }else{
+            register_email($email,$name,$msg);
+            echo("<script>'\You send a sucessefully message!\'");
+            header("location: ./");
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -154,19 +172,19 @@ $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') 
             </div>
         </div>
         <div class="my-pd form-color container" id="contactme">
-            <form>
+            <form action="index.php" method="post">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label ">Name</label>
                     <input type="text" class="form-control" id="mail" />
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1"/>
+                    <label for="email" class="form-label <?=!empty($email_err)? '' : 'is-invalid'?>">Email address</label>
+                    <input type="email" class="form-control" id="email"/>
+                    <span class="invalid-feedback"><?php echo $email_err; ?></span>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-mail</label>
-                    <textarea class="form-control" name="email" id="email" rows="6"
-                    ></textarea>
+                    <label for="msg" class="form-label">E-mail</label>
+                    <textarea class="form-control" name="msg" id="msg" rows="6"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

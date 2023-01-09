@@ -8,3 +8,19 @@ function getEducationRows(){
     return $pdo->query("SELECT * FROM education order by year_ini")->fetchAll(PDO::FETCH_ASSOC);
 
 }
+function register_email($from,$name,$msg){
+    $headers = "From: webmaster@example.com" . "\r\n" .
+        "CC: somebodyelse@example.com"."\r\n".
+        "Reply-To: <jtiagoviana@ipvc.pt>";
+    $msg .= "\r\n\nNote that the team will reply in 24h!";
+    $pdo = pdo_connect_mysql();
+    $pdo->prepare('insert into messages (from, name, message,state) values (?, ?, ?, ?)')->execute([$from,$name,$msg,0]);
+    $subject = "[#".$pdo->lastInsertId()."] You send a message to Tiago Viana";
+    mail($from,$subject,$msg,$headers);
+
+}
+function registerNewDevice($devicetype,$ip){
+    $pdo = pdo_connect_mysql();
+    $pdo->prepare('insert into acess (deviceType, ip_adress) values (?, ?)')->execute([$devicetype,$ip]);
+
+}
