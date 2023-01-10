@@ -57,7 +57,7 @@ if(isset($_GET['id'])){
             <img class="img-fluid" src="../../../files/certifications/<?=$cert['imagepath']?>"/>
         </div>
         <div class="col-md-6" id="myForm" style="display: block" >
-            <form action="update.php?id=<?=$_GET['id']?>'" method="post" enctype="multipart/form-data" novalidate>
+            <form action="update.php?id=<?=$_GET['id']?>" method="post" enctype="multipart/form-data" novalidate>
                 <label for="title">Title</label>
                 <input type="text" name="title" placeholder="Place or title of the certification" id="title"
                        class="form-control" value="<?=$cert['title']?>" required>

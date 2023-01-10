@@ -78,7 +78,7 @@ if (isset($_GET['id'])) {
             <div class="col-md-6" id="myForm" style="display: block" >
                 <div class="form-group mx-5 my-5">
                     <h2>Create language</h2>
-                    <form action="update.php?id=<?=$_GET['id']?>'" method="post" enctype="multipart/form-data" novalidate>
+                    <form action="update.php?id=<?=$_GET['id']?>" method="post" enctype="multipart/form-data" novalidate>
                         <label for="name">Name</label>
                         <input type="text" name="name" placeholder="Asp.net core 6" id="name" class="form-control" value="<?=$technologie['name']?>">
                         <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Do upload the new image</label>

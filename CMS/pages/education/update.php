@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
 <?=template_header('Education');?>
 <div class="form-group mx-5 my-5">
     <h2>Create language</h2>
-    <form action="update.php?id=<?=$_GET['id']?>'" method="post">
+    <form action="update.php?id=<?=$_GET['id']?>" method="post">
         <label for="place">Place</label>
         <input type="text" name="place" placeholder="Viana do Castelo" id="name" class="form-control" value="<?=$education['place']?>">
         <label for="year_ini">Year of start</label>

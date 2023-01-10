@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
 <?=template_header('Education');?>
     <div class="form-group mx-5 my-5">
         <h2>Update Language <?=$language['name']?></h2>
-        <form action="update.php?id=<?=$_GET['id']?>'" method="post">
+        <form action="update.php?id=<?=$_GET['id']?>" method="post">
             <label for="name">Language</label>
             <input type="text" name="name" placeholder="English" id="name" class="form-control" value="<?=$language['name']?>">
             <label for="level">Level</label>

@@ -37,6 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                     <th scope="col">#</th>
                     <th scope="col">Language</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
