@@ -67,23 +67,34 @@ if (isset($_GET['id'])) {
 ?>
 
 <?=template_header('Education');?>
-    <div class="form-group mx-5 my-5">
-        <h2>Create language</h2>
-        <form action="update.php?id=<?=$_GET['id']?>'" method="post">
-            <label for="name">Name</label>
-            <input type="text" name="name" placeholder="Asp.net core 6" id="name" class="form-control" value="<?=$technologie['name']?>">
-            <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Do upload the new image</label>
-            <label for="description">Description</label>
-            <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10">
-                <?=$technologie['description']?>
-            </textarea>
-            <button type="submit" class="btn btn-primary my-4">Submit</button>
-        </textarea>
-            <button type="submit" class="btn btn-primary my-4">Submit</button>
-        </form>
-        <?php if ($msg): ?>
-            <p><?=$msg?></p>
-        <?php endif; ?>
+    <div class="container py-4 px-4">
+        <h2>Update Tecnhologie</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-fluid" src="../../../files/techs/<?=$technologie['filename']?>"/>
+            </div>
+            <div class="col-md-6" id="myForm" style="display: block" >
+                <div class="form-group mx-5 my-5">
+                    <h2>Create language</h2>
+                    <form action="update.php?id=<?=$_GET['id']?>'" method="post" enctype="multipart/form-data" novalidate>
+                        <label for="name">Name</label>
+                        <input type="text" name="name" placeholder="Asp.net core 6" id="name" class="form-control" value="<?=$technologie['name']?>">
+                        <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Do upload the new image</label>
+                        <input type="file" class="form-control" id="myfile" name="myfile" accept="image/*">
+                        <label for="description">Description</label>
+                        <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10">
+                            <?=$technologie['description']?>
+                        </textarea>
+                        <button type="submit" class="btn btn-primary my-4">Submit</button>
+                    </textarea>
+                        <button type="submit" class="btn btn-primary my-4">Submit</button>
+                    </form>
+                    <?php if ($msg): ?>
+                        <p><?=$msg?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
     </div>
 
 <?=template_footer();?>

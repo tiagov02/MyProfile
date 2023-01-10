@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?=template_header('Education');?>
     <div class="form-group mx-5 my-5">
-        <h2>Create language</h2>
+        <h2>Create Technologie</h2>
         <form action="create.php" method="post" enctype="multipart/form-data" novalidate>
             <label for="name">Name</label>
             <input type="text" name="name" placeholder="Asp.net core 6" id="name" class="form-control">

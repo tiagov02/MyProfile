@@ -28,7 +28,7 @@ if(isset($_GET['id'])) {
             mail($message['from'], $subject, $msg, $headers);
             $st_create = $pdo->prepare('insert into replies (id_message, message, user) values (?,?,?);');
             $st_create->execute([$_GET['id'], $msg, $_SESSION['username']]);
-            header("location: update.php?id=".$_GET['id']);
+            header("location: reply.php?id=".$_GET['id']);
         }
     }
 }
@@ -38,9 +38,9 @@ else{
 template_header('tt');
 ?>
 
-<div class="container-fluid m-1 overflow-auto bg-body-tertiary text-align-center">
+<div class="container overflow-auto bg-body-tertiary text-align-center">
     <!--EXTERNAL MSG-->
-    <div class="row p-2 overflow-y-auto">
+    <div class="row p-2">
         <div class="col-1" style="border-right: solid 1px rgb(110, 110, 110);"><i class="bi bi-person-fill"></i></div>
         <div class="col-11">
             <div class="card">
@@ -58,7 +58,7 @@ template_header('tt');
         </div>
     </div>
     <?php foreach ($replies as $row):?>
-        <div class="row p-2">
+        <div class="row p-2 overflow-y-auto">
             <div class="col-1" style="border-right: solid 1px rgb(110, 110, 110);"><i class="bi bi-briefcase-fill"></i></div>
             <div class="col-11" >
                 <div class="card">

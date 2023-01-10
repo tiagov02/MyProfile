@@ -65,10 +65,10 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                             ?>
                         </td>
                         <td class="actions">
-                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
+                            <?php if($_SESSION['username'] != $row['username']){?><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
                                 <i class="bi bi-trash"></i>
-                            </button>
-                            <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
+                            </button><?php }?>
+                            <a href="update.php?id=<?=$row['id']?>" ><i class="bi bi-pencil-square"></i></a>
                         </td>
                         <!-- Modal -->
                         <div class="modal fade" id="modaldelete<?=$row['id']?>" tabindex="-1" aria-labelledby="delete<?=$row['id']?>" aria-hidden="true">

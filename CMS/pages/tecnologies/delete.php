@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
             // User clicked the "Yes" button, delete record
             $stmt = $pdo->prepare('DELETE FROM technologies WHERE id = ?');
             $stmt->execute([$_GET['id']]);
-            $msg = 'You have deleted the language!';
+            header('Location: index.php');
         } else {
             // User clicked the "No" button, redirect them back to the read page
             header('Location: index.php');
@@ -33,20 +33,3 @@ if (isset($_GET['id'])) {
     exit('No ID specified!');
 }
 ?>
-
-<?=template_header('Delete')?>
-
-<div class="content delete">
-    <h2>Delete language #<?=$technologie['id']?></h2>
-    <?php if ($msg): ?>
-        <p><?=$msg?></p>
-    <?php else: ?>
-        <p>Are you sure you want to delete <?=$technologie['name']?>?</p>
-        <div class="yesno">
-            <a href="delete.php?id=<?=$technologie['id']?>&confirm=yes">Yes</a>
-            <a href="delete.php?id=<?=$technologie['id']?>&confirm=no">No</a>
-        </div>
-    <?php endif; ?>
-</div>
-
-<?=template_footer()?>

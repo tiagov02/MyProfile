@@ -52,7 +52,10 @@ if(isset($_GET['id'])){
 <?= template_header('ABOUT ME'); ?>
 <div class="container py-4 px-4">
     <div class="row">
-        <div class="col-md-6" id="myForm" style="display: block">
+        <div class="col-md-6">
+            <img class="img-fluid" src="../../../files/certifications/<?=$cert['imagepath']?>"/>
+        </div>
+        <div class="col-md-6" id="myForm" style="display: block" >
             <form action="update.php?id=<?=$_GET['id']?>'" method="post" enctype="multipart/form-data" novalidate>
                 <label for="title">Title</label>
                 <input type="text" name="title" placeholder="Place or title of the certification" id="title"

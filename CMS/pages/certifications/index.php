@@ -37,7 +37,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
-
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -81,7 +80,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
             <a href="./create.php" class="btn btn-primary">Create Certification</a>
 
         <?php else:?>
-            <strong><div class="empty-text">There are no records in education try <a href="create.php">add</a> one</div></strong>
+            <strong><div class="empty-text">There are no records try <a href="create.php">add</a> one</div></strong>
         <?php endif;?>
     </div>
 

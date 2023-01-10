@@ -43,6 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <?=template_header('ABOUT ME');?>
 <div class="container py-4 px-4">
+    <h2>Create Certification</h2>
     <div class="row">
         <div class="col-md-6" id="myForm" style="display: block" >
             <form action="create.php" method="post" enctype="multipart/form-data" novalidate>
