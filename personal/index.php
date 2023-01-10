@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <main class="my-color">
     <div>
-        <h1 class="d-flex justify-content-center"><?=$aboutme['name']?></h1>
+        <h1 class="d-flex justify-content-center"><?=$aboutme['my_name']?></h1>
         <h2 class="d-flex justify-content-center"><?=$aboutme['actual_role']?></h2>
         <div class="d-flex justify-content-center">
             <svg
@@ -141,7 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div id="collapse<?=$tec['id']?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$tec['id']?>" data-bs-parent="#accordionExample" style="">
                         <div class="accordion-body">
                             <div class="row">
-                                <div class="col-2"><img class="img-fluid" src="../files/techs/<?=$tec['filename']?>" alt="<?=$tec['description']?>"></div>
+                                <div class="col-2"><img class="img-fluid" src="../files/techs/<?=$tec['filename']?>"></div>
                                 <div class="col-10"><?=$tec['description']?></div>
                             </div>
                         </div>

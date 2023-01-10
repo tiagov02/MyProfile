@@ -8,11 +8,11 @@ require "../../DB/connectDB.php";
 $pdo = pdo_connect_mysql();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $description = !isset($_POST['description']) ? '' : $_POST['description'];
-    $title = !isset($POST['title'])? '' : $_POST['title'];
-    //Validate if the request have a file
-
     if(!empty($_POST)){
+        $description = !isset($_POST['description']) ? '' : $_POST['description'];
+        $title = $_POST['title'];
+        print_r($_POST);
+        //Validate if the request have a file
         if(!empty($_FILES['myfile'])){
             if(is_uploaded_file($_FILES["myfile"]["tmp_name"])){
                 $filename = date("YmdHis")."_".$_FILES["myfile"]["name"];
@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $msg = "Image uploaded successfully";
                         $stmt = $pdo->prepare('insert into certifications (imagepath, description, title) values (?, ?, ?);');
                         $stmt->execute([$filename,$description,$title]);
-                        header("location: update.php?id=".$pdo->lastInsertId());
+                        //header("location: update.php?id=".$pdo->lastInsertId());
                     }else{
                         die("Nao foi possivel fazer o upload da imagem");
                     }
@@ -36,7 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             else{
                 die("Error in uploading!");
             }
-            header("location: ./");
         }
     }
 

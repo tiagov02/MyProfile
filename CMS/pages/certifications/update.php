@@ -10,7 +10,7 @@ $pdo = pdo_connect_mysql();
 if(isset($_GET['id'])){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $description = !isset($_POST['description']) ? '' : $_POST['description'];
-        $title = !isset($POST['title']) ? '' : $_POST['title'];
+        $title = $_POST['title'];
         //Validate if the request have a file
 
         if (!empty($_POST)) {

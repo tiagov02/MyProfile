@@ -51,7 +51,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['description']?></td>
                         <td class="actions">
                             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
-                                <i class="bi bi-pencil-square"></i>
+                                <i class="bi bi-trash"></i>
                             </button>
                             <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil-square"></i></a>
                         </td>

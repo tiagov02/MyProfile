@@ -15,10 +15,10 @@ if (!$aboutme) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $description = !isset($_POST['description']) ? '' : $_POST['description'];
-    $name = !isset($POST['name'])? '' : $_POST['name'];
-    $actual_role = !isset($POST['actual_role'])? '' : $_POST['actual_role'];
+    $name = $_POST['name'];
+    $actual_role = $_POST['actual_role'];
     //Validate if the request have a file
-
+    //print_r($_POST);
    if(!empty($_FILES['myfile'])){
        if(is_uploaded_file($_FILES["myfile"]["tmp_name"])){
            $filename = date("YmdHis")."_".$_FILES["myfile"]["name"];
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            if($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/gif' || $mimetype == 'image/png'){
                if (move_uploaded_file($tempname, "../../../files/aboutme/".$filename)) {
                    $msg = "Image uploaded successfully";
-                   $stmt = $pdo->prepare('UPDATE aboutme SET text=?, imagepath=?, name=?, actual_role=?, updated_on=CURDATE() WHERE id=1');
+                   $stmt = $pdo->prepare('UPDATE aboutme SET text=?, imagepath=?, my_name=?, actual_role=?, updated_on=CURDATE() WHERE id=1');
                    $stmt->execute([$description,$filename,$name,$actual_role]);
                }else{
                    die("Nao foi possivel fazer o upload da imagem");
@@ -37,10 +37,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            }else{
                $msg = "Please upload an image!";
            }
-       }
-       else{
-           $stmt = $pdo->prepare('UPDATE aboutme SET text=?, updated_on=CURDATE() WHERE id=1');
-           $stmt->execute([$description]);
+       } else{
+           $stmt = $pdo->prepare('UPDATE aboutme SET text=?, my_name=?, actual_role=?, updated_on=CURDATE() WHERE id=1');
+           $stmt->execute([$description,$name,$actual_role]);
+
        }
        header("location: ./");
    }
@@ -57,9 +57,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="col-md-6" id="myForm" style="display: block" >
             <form action="index.php" method="post" enctype="multipart/form-data" novalidate>
                 <label for="name">Name</label>
-                <input type="text" name="name" placeholder="Tiago Viana" id="name" class="form-control" value="<?=$aboutme['name']?>">
+                <input type="text" name="name" placeholder="Tiago Viana" id="name" class="form-control" value="<?=$aboutme['my_name']?>" required>
                 <label for="actual_role">What do you do in the moment?</label>
-                <input type="text" name="actual_role" placeholder="Student" id="actual_role" class="form-control" value="<?=$aboutme['actual_role']?>">
+                <input type="text" name="actual_role" placeholder="Student" id="actual_role" class="form-control" value="<?=$aboutme['actual_role']?>" required>
                 <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Faça upload da nova imagem</label>
                 <input type="file" class="form-control" id="myfile" name="myfile" accept="image/*">
                 <label for="description">Description</label>
