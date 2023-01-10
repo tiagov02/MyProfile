@@ -44,7 +44,7 @@ function register_email($from,$name,$msg){
         "Reply-To: <jtiagoviana@ipvc.pt>";
     $msg .= "\r\n\nNote that the team will reply in 24h!";
     $pdo = pdo_connect_mysql();
-    $pdo->prepare('insert into messages (from, name, message,state) values (?, ?, ?, ?)')->execute([$from,$name,$msg,0]);
+    $pdo->prepare('insert into messages (rementent, name, message,state) values (?, ?, ?, ?)')->execute([$from,$name,$msg,0]);
     $subject = "[#".$pdo->lastInsertId()."] You send a message to Tiago Viana";
     mail($from,$subject,$msg,$headers);
 

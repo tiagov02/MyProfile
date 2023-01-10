@@ -75,7 +75,7 @@ create table if not exists messages
 (
     id      int auto_increment
     primary key,
-    `from`  varchar(100)           not null,
+    rementent  varchar(100)           not null,
     name    varchar(100)           not null,
     message varchar(1000)          not null,
     date    date default curdate() null,

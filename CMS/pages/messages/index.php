@@ -69,7 +69,7 @@ if(isset($_GET['id']) && isset($_GET['read'])){
                             </span>
                         </th>
                         <th scope="row"><?=$row['id']?></th>
-                        <td><?=$row['from']?></td>
+                        <td><?=$row['rementent']?></td>
                         <td><?=$row['name']?></td>
                         <td><?=$row['date']?></td>
                         <td><?=$row['state'] == 0 ? 'Unread':'Read'?></td>

@@ -26,7 +26,7 @@ if(isset($_GET['id'])) {
                 "CC: jtiagoviana@ipvc.pt" . "\r\n" .
                 "Reply-To: <jtiagoviana@ipvc.pt>";
             $subject = "[#" . $pdo->lastInsertId() . "] You send a message to Tiago Viana";
-            mail($message['from'], $subject, $msg, $headers);
+            mail($message['rementent'], $subject, $msg, $headers);
             $st_create = $pdo->prepare('insert into replies (id_message, message, user) values (?,?,?);');
             $st_create->execute([$_GET['id'], $msg, $_SESSION['username']]);
             header("location: reply.php?id=".$_GET['id']);
@@ -47,7 +47,7 @@ template_header('tt');
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col-6">From:<?=$message['name']?><a href="mailto:<?=$message['from']?>"><<?=$message['from']?>></a></div>
+                        <div class="col-6">From:<?=$message['name']?><a href="mailto:<?=$message['rementent']?>"><<?=$message['rementent']?>></a></div>
                         <div class="col-6 text-body-secondary"><?=$message['date']?></div>
                     </div>
                 </div>
