@@ -17,8 +17,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $description = !isset($_POST['description']) ? '' : $_POST['description'];
     $name = $_POST['name'];
     $actual_role = $_POST['actual_role'];
-    //Validate if the request have a file
-    //print_r($_POST);
+    $github = $_POST['github'];
+    $instagram = $_POST['instagram'];
+    $whatsapp = $_POST['whatsapp'];
+
    if(!empty($_FILES['myfile'])){
        if(is_uploaded_file($_FILES["myfile"]["tmp_name"])){
            $filename = date("YmdHis")."_".$_FILES["myfile"]["name"];
@@ -29,8 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            if($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/gif' || $mimetype == 'image/png'){
                if (move_uploaded_file($tempname, "../../../files/aboutme/".$filename)) {
                    $msg = "Image uploaded successfully";
-                   $stmt = $pdo->prepare('UPDATE aboutme SET text=?, imagepath=?, my_name=?, actual_role=?, updated_on=CURDATE() WHERE id=1');
-                   $stmt->execute([$description,$filename,$name,$actual_role]);
+                   $stmt = $pdo->prepare('UPDATE aboutme SET text=?, imagepath=?, my_name=?, actual_role=?,github=?,instagram=?,whatsapp=?, updated_on=CURDATE() WHERE id=1');
+                   $stmt->execute([$description,$filename,$name,$actual_role,$github,$instagram,$whatsapp]);
+                   echo("<script>\"Updated sucessefyully!\"</script>");
+                   header("location: ./");
                }else{
                    die("Nao foi possivel fazer o upload da imagem");
                }
@@ -38,8 +42,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                $msg = "Please upload an image!";
            }
        } else{
-           $stmt = $pdo->prepare('UPDATE aboutme SET text=?, my_name=?, actual_role=?, updated_on=CURDATE() WHERE id=1');
-           $stmt->execute([$description,$name,$actual_role]);
+           $stmt = $pdo->prepare('UPDATE aboutme SET text=?, my_name=?, actual_role=?,github=?,instagram=?,whatsapp=?, updated_on=CURDATE() WHERE id=1');
+           $stmt->execute([$description,$name,$actual_role,$github,$instagram,$whatsapp]);
+           echo("<script>alert(\"Updated sucessefyully!\")</script>");
+           header("location: ./");
 
        }
        header("location: ./");
@@ -64,6 +70,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="file" class="form-control" id="myfile" name="myfile" accept="image/*">
                 <label for="description">Description</label>
                 <textarea  name="description" placeholder="I LIKE!" id="description" class="form-control" rows="6" cols="10"><?=$aboutme['text'];?></textarea>
+                <label for="instagram">Instagram</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" name="instagram" id="instagram" aria-label="Instagram" aria-describedby="basic-addon1" value="<?=$aboutme['instagram']?>" required>
+                </div>
+                <label for="whatsapp">Whatsapp</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">+351</span>
+                    <input type="text" class="form-control" placeholder="Username" name="whatsapp" id="whatsapp" aria-label="Whatsapp" aria-describedby="basic-addon1" value="<?=$aboutme['whatsapp']?>" required>
+                </div>
+                <label for="github">Github</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">https://github.com/</span>
+                    <input type="text" class="form-control" placeholder="Username" name="github" id="github" aria-label="Github" aria-describedby="basic-addon1" value="<?=$aboutme['github']?>" required>
+                </div>
                 <button class="btn btn-primary float-end mt-5" type="submit">Update</button>
             </form>
         </div>

@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $stmt = $pdo->prepare('insert into certifications (imagepath, description, title) values (?, ?, ?);');
                         $stmt->execute([$filename,$description,$title]);
                         //header("location: update.php?id=".$pdo->lastInsertId());
+                        echo("<script>alert(\"Created sucessefyully!\")</script>");
                     }else{
                         die("Nao foi possivel fazer o upload da imagem");
                     }

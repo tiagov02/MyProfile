@@ -11,6 +11,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ) {
                 $st->execute([$_GET['id']]);
                 $stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
                 $stmt->execute([$_GET['id']]);
+                echo("<script>alert(\"You done the delete!\")</script>");
                 header("location: index.php");
             } catch (PDOException $ex) {
                 die("<h1>You entered uncorrectly on this script or an error occurs</h1>");

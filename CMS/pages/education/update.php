@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
             // Update the record
             $stmt = $pdo->prepare('UPDATE education SET place=?, description=?, year_ini=?,year_end=? WHERE id = ?');
             $stmt->execute([$place, $description, $year_ini, $year_end, $_GET['id']]);
-            $msg = 'Updated Successfully!';
+            echo("<script>alert(\"Updated sucessefyully!\")</script>");
         }
     }
     // Get the language from the languages table

@@ -27,7 +27,17 @@ function template_header($title) {
         <body>
         <nav class="navtop">
             <div>
-                <h1>Hello $username</h1>
+                <h1>
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Hello $username</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-dark" href="../my-profile">My Profile</a></li>
+                                </li>
+                            </ul>
+                        </ul>
+                </li>
+                </h1>
                 <a href="../dashboard"><i class="bi bi-house-door"></i>Dashboard</a>
                 <a href="../aboutme"><i class="bi bi-person"></i>About Me</a>
                 <a href="../certifications"><i class="bi bi-folder2-open"></i>Certifications</a>
@@ -35,7 +45,7 @@ function template_header($title) {
                 <a href="../irs-simulator"><i class="bi bi-cash-coin"></i>IRS Simulator</a>
                 <a href="../languages"><i class="bi bi-globe-americas"></i>Languages</a>
                 <a href="../messages"><i class="bi bi-envelope"></i>Messages</a>
-                <a href="../skills"><i class="fas fa-address-book"></i>Skills</a>
+                <a href="../skills"><i class="bi bi-file-earmark-person"></i>Skills</a>
                 <a href="../tecnologies"><i class="bi bi-braces"></i>Technologies</a>
                 <a href="../USERS-MANAGEMENT"><i class="bi bi-person-video2"></i>Users Management</a>
                 <a href="../../auth/logout.php">Logout</a>
@@ -60,7 +70,17 @@ function template_header($title) {
         <body>
         <nav class="navtop">
             <div>
-                <h1>Hello $username</h1>
+                <h1>
+                    <ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Hello $username</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-dark" href="../my-profile">My Profile</a></li>
+                                </li>
+                            </ul>
+                        </ul>
+                </li>
+                </h1>
                 <a href="../irs-simulator"><i class="bi bi-cash-coin"></i>IRS Simulator</a>
                 <a href="../messages"><i class="bi bi-envelope"></i>Messages</a>
                 <a href="../../auth/logout.php">Logout</a>

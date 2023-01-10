@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
             // Update the record
             $stmt = $pdo->prepare('UPDATE languages SET name=?, level=? WHERE id = ?');
             $stmt->execute([$name,$level,$_GET['id']]);
-            $msg = 'Updated Successfully!';
+            echo("<script>alert(\"Updated sucessefyully!\")</script>");
         }
     }
     // Get the language from the languages table

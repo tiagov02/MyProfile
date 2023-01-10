@@ -26,6 +26,7 @@ if(isset($_GET['id'])){
                             $msg = "Image uploaded successfully";
                             $stmt = $pdo->prepare('UPDATE certifications SET imagepath=?, description=?, title=? WHERE id=?');
                             $stmt->execute([$filename, $description, $title,$_GET['id']]);
+                            echo("<script>alert(\"Updated sucessefyully!\")</script>");
                             header("location: update.php?id=" . $pdo->lastInsertId());
                         } else {
                             die("Nao foi possivel fazer o upload da imagem");

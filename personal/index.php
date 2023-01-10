@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $email_err="Please input a valid email";
         }else{
             register_email($email,$name,$msg);
-            echo("<script>'\You send a sucessefully message!\'</script>");
+            echo("<script>\"You send a sucessefully message!\"</script>");
             header("location: ./");
         }
     }

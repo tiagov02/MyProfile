@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $stmt->execute([$name,$level]);
 
         // Output message
-        $msg = 'Created Successfully!';
+        echo("<script>alert(\"Created sucessefyully!\")</script>");
     }
 }
 ?>
@@ -36,9 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="text" name="level" placeholder="Advanced" id="year_ini" class="form-control">
             <button type="submit" class="btn btn-primary my-4">Submit</button>
         </form>
-        <?php if (isset($msg)): ?>
-            <p><?=$msg?></p>
-        <?php endif; ?>
     </div>
 
 <?=template_footer();?>

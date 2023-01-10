@@ -93,18 +93,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <?=template_header('Education');?>
     <div class="form-group mx-5 my-5">
         <h2>Create language</h2>
+        <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label for="username">Username</label>
-            <input type="text" name="username" placeholder="insert username here" id="username" class="form-control form-control-lg <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>">
+            <input type="text" name="username" placeholder="insert username here" id="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $username_err; ?></span>
             <!--PWD-->
             <label for="password">Password</label>
-            <input type="text" name="password" placeholder="password" id="password" class="form-control form-control-lg <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <input type="text" name="password" placeholder="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
             <!--CONF PQD-->
             <label for="confirm_password">Password</label>
-            <input type="text" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control form-control-lg <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+            <input type="text" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+            <label for="role">Select the role</label>
             <select class="form-select" aria-label="Default select example" name="role" required>
                 <option selected>Open this select menu</option>
                 <option value="Admin">Admin</option>
@@ -112,6 +114,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </select>
             <button type="submit" class="btn btn-primary my-4">Submit</button>
         </form>
+        </div>
         <?php if (isset($msg)): ?>
             <p><?=$msg?></p>
         <?php endif; ?>

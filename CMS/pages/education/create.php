@@ -26,7 +26,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['role'] ==
             $stmt->execute([$place, $description, $year_ini, $year_end]);
 
             // Output message
-            $msg = 'Created Successfully!';
+            echo("<script>alert(\"Created sucessefyully!\")</script>");
         }
     }
     ?>

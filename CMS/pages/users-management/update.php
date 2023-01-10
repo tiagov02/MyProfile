@@ -17,6 +17,13 @@ if(isset($_GET['id'])) {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
+    $sql2 = "SELECT role FROM user_roles WHERE id_user=:id";
+
+    $st = $pdo->prepare($sql2);
+    $st->bindParam(":id", $_GET['id'], PDO::PARAM_INT);
+    $st->execute();
+    $role = $stmt->fetch(PDO::FETCH_ASSOC);
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(!empty($_POST)){
             print_r($_POST);
@@ -68,10 +75,9 @@ unset($pdo);
     <div class="container">
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>?id=<?=$_GET['id']?>" method="post">
         <label for="role">Selecione a role do user</label>
-        <select class="form-select" aria-label="Default select example" name="role" required>
-            <option selected>Open this select menu</option>
-            <option value="Admin">Admin</option>
-            <option value="Manager">Manager</option>
+        <select class="form-select" aria-label="Default select example" name="role" value="<?=$role['role']?>"required>
+            <option value="Admin" <?php if ($role == "Admin") { echo ' selected';}?>>Admin</option>
+            <option value="Manager" <?php if ($role == "Manager") { echo ' selected';}?>>Manager</option>
         </select>
         <button type="submit" class="btn btn-primary my-4">Submit</button>
     </form>
