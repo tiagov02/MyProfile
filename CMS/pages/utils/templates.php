@@ -28,16 +28,16 @@ function template_header($title) {
         <nav class="navtop">
             <div>
                 <h1>Hello $username</h1>
-                <a href="../dashboard"><i class="fas fa-address-book"></i>Dashboard</a>
-                <a href="../aboutme"><i class="fas fa-address-book"></i>About Me</a>
-                <a href="../certifications"><i class="fas fa-address-book"></i>Certifications</a>
-                <a href="../education"><i class="fas fa-address-book"></i>Education</a>
-                <a href="../irs-simulator"><i class="fas fa-address-book"></i>IRS Simulator</a>
-                <a href="../languages"><i class="fas fa-address-book"></i>Languages</a>
-                <a href="../messages"><i class="fas fa-address-book"></i>Messages</a>
+                <a href="../dashboard"><i class="bi bi-house-door"></i>Dashboard</a>
+                <a href="../aboutme"><i class="bi bi-person"></i>About Me</a>
+                <a href="../certifications"><i class="bi bi-folder2-open"></i>Certifications</a>
+                <a href="../education"><i class="bi bi-book"></i>Education</a>
+                <a href="../irs-simulator"><i class="bi bi-cash-coin"></i>IRS Simulator</a>
+                <a href="../languages"><i class="bi bi-globe-americas"></i>Languages</a>
+                <a href="../messages"><i class="bi bi-envelope"></i>Messages</a>
                 <a href="../skills"><i class="fas fa-address-book"></i>Skills</a>
-                <a href="../tecnologies"><i class="fas fa-address-book"></i>Technologies</a>
-                <a href="../USERS-MANAGEMENT"><i class="fas fa-address-book"></i>Users Management</a>
+                <a href="../tecnologies"><i class="bi bi-braces"></i>Technologies</a>
+                <a href="../USERS-MANAGEMENT"><i class="bi bi-person-video2"></i>Users Management</a>
                 <a href="../../auth/logout.php">Logout</a>
             </div>
         </nav>
@@ -61,8 +61,8 @@ function template_header($title) {
         <nav class="navtop">
             <div>
                 <h1>Hello $username</h1>
-                <a href="../irs-simulator"><i class="fas fa-address-book"></i>IRS Simulator</a>
-                <a href="../messages"><i class="fas fa-address-book"></i>Messages</a>
+                <a href="../irs-simulator"><i class="bi bi-cash-coin"></i>IRS Simulator</a>
+                <a href="../messages"><i class="bi bi-envelope"></i>Messages</a>
                 <a href="../../auth/logout.php">Logout</a>
             </div>
         </nav>

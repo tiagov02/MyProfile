@@ -5,11 +5,11 @@ require '../../DB/connectDB.php';
 
 $pdo = pdo_connect_mysql();
 $st_user = $pdo->prepare('SELECT * from users WHERE id=?');
-$st_user->execute($_SESSION['id']);
+$st_user->execute(array($_SESSION['id']));
 $err = '';
 $user = $st_user->fetch(PDO::FETCH_ASSOC);
 $st_user_role = $pdo->prepare('SELECT * from user_roles WHERE id_user=?');
-$st_user_role->execute($_SESSION['id']);
+$st_user_role->execute(array($_SESSION['id']));
 $user_role = $st_user_role->fetch(PDO::FETCH_ASSOC);
 
 $sql = "UPDATE users SET password=:password WHERE id=:id";
@@ -42,10 +42,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 <?=template_header('title')?>
 
-<div class="container">
+<div class="container py-4">
     <div class="row">
         <div class="col-md-3">
-            <img src="../../../files/user.svg">
+            <img class="img-fluid" src="../../../files/user.jpg"">
             <h4><?=$user['username']?></h4>
             <h4><?=$user_role['role']?></h4>
         </div>
