@@ -5,9 +5,12 @@ create table if not exists aboutme
     id          int auto_increment
     primary key,
     updated_on  date default curdate() not null,
-    name        varchar(100)           null,
+    my_name     varchar(1000)          null,
     actual_role varchar(100)           null,
     email       varchar(100)           null,
+    instagram   varchar(100)           null,
+    whatsapp    varchar(100)           null,
+    github      varchar(100)           null,
     constraint aboutme_id_uindex
     unique (id)
     );
