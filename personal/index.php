@@ -7,6 +7,7 @@ $techs = getTechRows();
 $languages = getLanguageRows();
 $skills = getSkillRows();
 $certs = getCertificationRows();
+$aboutme = getAboutMe();
 
 //detect device type
 $detect = new \Detection\MobileDetect();
@@ -24,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $email_err="Please input a valid email";
         }else{
             register_email($email,$name,$msg);
-            echo("<script>\'You send a sucessefully message!\'");
+            echo("<script>'\You send a sucessefully message!\'</script>");
             header("location: ./");
         }
     }
@@ -71,8 +72,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <main class="my-color">
     <div>
-        <h1 class="d-flex justify-content-center">Jose Tiago Viana</h1>
-        <h2 class="d-flex justify-content-center">Estudante</h2>
+        <h1 class="d-flex justify-content-center"><?=$aboutme['name']?></h1>
+        <h2 class="d-flex justify-content-center"><?=$aboutme['actual_role']?></h2>
         <div class="d-flex justify-content-center">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,26 +90,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"
                 />
             </svg>
-            <a href="mailto:jtiagoviana@ipvc.pt"> jtiagoviana@ipvc.pt </a>
+            <a href="mailto:<?=$aboutme['email']?>"> <?=$aboutme['email']?> </a>
         </div>
     </div>
     <div class="mt-4 container">
         <div class="row">
             <div class="px-4 col-sm-6">
-                <img src="./assets/imgs/imgperfil.jpg" class="img-fluid" />
+                <img src="../files/aboutme/<?=$aboutme['imagepath']?>" class="img-fluid" />
             </div>
             <div class="col-sm-6" id="aboutme">
                 <h3>About Me</h3>
                 <p>
-                    In my years in this course, I develop some capacites in Informatics Engeneering, most in backend developing(in a techical way).
+                    <?=$aboutme['text']?>
                 </p>
-                <p>
-                    Apart that I made other soft sills, like work in team, ,proactivity, etc...
-                </p>
-                <p>
-                    In my free times I like to listen music, spent time with my friends and sometimes learn a something new.
-                </p>
-
+                <p class="text-end text-body-secondary">Updated on: <?=$aboutme['updated_on']?></p>
             </div>
         </div>
     </div>
@@ -133,7 +128,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 </div>
             </div>
         </div>
-        <div class="mt-4 container bg-terciary">
+        <div class="mt-4 container bg-terciary" id="technologies">
             <h3 class="text-center">My Technologies</h3>
             <div class="accordion" id="accordionExample">
                 <?php foreach ($techs as $tec):?>
@@ -143,7 +138,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <?=$tec['name']?>
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="heading<?=$tec['id']?>" data-bs-parent="#accordionExample" style="">
+                    <div id="collapse<?=$tec['id']?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$tec['id']?>" data-bs-parent="#accordionExample" style="">
                         <div class="accordion-body">
                             <div class="row">
                                 <div class="col-2"><img src="../files/<?=$tec['filename']?>" alt="<?=$tec['description']?>"></div>
@@ -196,7 +191,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <h3><?=$cert['title']?></h3>
                     <p><?=$cert['description']?></p>
                     <div class="text-center">
-                        <img src="../files/certifications<?=$cert['imagepath']?>" class="px-4 img-fluid"/>
+                        <img src="../files/certifications/<?=$cert['imagepath']?>" class="px-4 img-fluid"/>
                     </div>
                 </div>
             </div>
@@ -227,7 +222,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <footer class="my-color">
     <div class="my-margin d-flex flex-row justify-content-center text-center">
         <div class="contact">
-            <a href="https://instagram.com/tiago_castro_viana" target="_blank">
+            <a href="https://instagram.com/<?=$aboutme['instagram']?>" target="_blank">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
@@ -242,7 +237,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </a>
         </div>
         <div class="contact">
-            <a href="https://wa.me/35191080826" target="_blank">
+            <a href="https://wa.me/351<?=$aboutme['whatsapp']?>" target="_blank">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"
@@ -257,7 +252,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </a>
         </div>
         <div class="contact">
-            <a href="https://github.com/tiagov02" target="_blank">
+            <a href="https://github.com/<?=$aboutme['github']?>" target="_blank">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="40"

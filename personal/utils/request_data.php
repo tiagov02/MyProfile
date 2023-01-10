@@ -31,6 +31,12 @@ function getCertificationRows(){
 
     return $pdo->query("SELECT * FROM certifications order by title")->fetchAll(PDO::FETCH_ASSOC);
 }
+function getAboutMe(){
+    $pdo = pdo_connect_mysql();
+
+    return $pdo->query("SELECT * FROM aboutme WHERE id=1")->fetch(PDO::FETCH_ASSOC);
+}
+
 
 function register_email($from,$name,$msg){
     $headers = "From: jtiagoviana@ipvc.pt" . "\r\n" .
