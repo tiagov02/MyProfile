@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+if($_SESSION['loggedin'] && $_SESSION['role'] == "Admin"):
 require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
@@ -25,7 +25,6 @@ $certs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $num_records = $pdo->query('SELECT COUNT(*) FROM certifications')->fetchColumn();
 ?>
 <?php
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
     template_header('Home')
     ?>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+if($_SESSION['loggedin'] && $_SESSION['role'] == "Admin"):
 require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
@@ -57,4 +57,8 @@ if (isset($_GET['id'])) {
 </div>
 
 <?=template_footer();?>
+<?php else:
+    header("location ../auth");
+endif;
+?>
 

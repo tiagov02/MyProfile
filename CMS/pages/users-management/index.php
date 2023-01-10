@@ -7,7 +7,7 @@ require "../../DB/connectDB.php";
 
 
 $pdo = pdo_connect_mysql();
-
+if($_SESSION['loggedin'] && $_SESSION['role'] == "Admin"):
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 // Number of records to show on each page
 $records_per_page = 20;
@@ -25,7 +25,6 @@ $education = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $num_records = $pdo->query('SELECT COUNT(*) FROM users')->fetchColumn();
 ?>
 <?php
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
     template_header('Home')
     ?>
 

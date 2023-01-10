@@ -1,6 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ) {
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION['role'] == "Admin") {
     require '../../DB/connectDB.php';
     $pdo = pdo_connect_mysql();
     if (isset($_GET['confirm']) && isset($_GET['id'])) {
@@ -17,3 +18,4 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ) {
         }
     }
 }
+

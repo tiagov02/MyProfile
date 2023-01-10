@@ -4,7 +4,7 @@ session_start();
 require "../utils/templates.php";
 
 require "../../DB/connectDB.php";
-
+if($_SESSION['loggedin'] && $_SESSION['role'] == "Admin"):
 
 $pdo = pdo_connect_mysql();
 
@@ -96,5 +96,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
     <?=template_footer()?>
 <?php else:
     header(" location: ../auth");
+endif;
+?>
+<?php else:
+    header("location ../auth");
 endif;
 ?>

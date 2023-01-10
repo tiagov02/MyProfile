@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true && $_SESSION['role'] == "Admin"):
 
 require "../utils/templates.php";
 

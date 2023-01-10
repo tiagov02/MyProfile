@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+if($_SESSION['loggedin'] && $_SESSION['role'] == "Admin"):
 require "../utils/templates.php";
 require "../../DB/connectDB.php";
 
@@ -32,4 +32,8 @@ if (isset($_GET['id'])) {
 } else {
     exit('No ID specified!');
 }
+?>
+<?php else:
+    header("location ../auth");
+endif;
 ?>
