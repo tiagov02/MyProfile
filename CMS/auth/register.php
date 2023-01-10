@@ -110,7 +110,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     <div class="form-outline mb-4">
                                         <input type="text" name="username" class="form-control form-control-lg <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                                         <span class="invalid-feedback"><?php echo $username_err; ?></span>
-                                        <label class="form-label" for="form3Example3">Email address</label>
+                                        <label class="form-label" for="form3Example3">Username</label>
                                     </div>
 
                                     <!-- Password input -->

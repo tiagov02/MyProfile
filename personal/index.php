@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!empty($_POST)){
         $email = $_POST['email'];
         $name = !isset($POST['name'])? '' : $_POST['name'];
-        $msg = !isset($POST['msg'])? '' : "Sended by: ".$name."\r\n"."Email adress: ".$email."\r\n".$_POST['msg'];
+        $msg = "Sended by: ".$name."\r\n"."Email adress: ".$email."\r\n".$_POST['msg'];
         if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
             $email_err="Please input a valid email";
         }else{
