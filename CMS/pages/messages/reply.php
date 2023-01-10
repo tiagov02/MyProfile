@@ -6,6 +6,7 @@ require '../utils/templates.php';
 
 $pdo = pdo_connect_mysql();
 
+if($_SESSION['loggedin']):
 if(isset($_GET['id'])) {
     $stmt = $pdo->prepare('SELECT * FROM messages where id=?');
     $stmt->execute([$_GET['id']]);
@@ -95,3 +96,7 @@ template_header('tt');
 </div>
 
 <?=template_footer()?>
+<?php else:
+    header("location ../auth");
+endif;
+?>
