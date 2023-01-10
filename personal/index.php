@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="#languages" class="nav-link">Languages</a>
         </li>
         <li class="nav-item">
-            <a href="#tecnologies" class="nav-link">Tecnologies</a>
+            <a href="#technologies" class="nav-link">Technologies</a>
         </li>
         <li class="nav-item">
             <a href="#education" class="nav-link">Education</a>
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="#certs" class="nav-link">Certifications</a>
         </li>
         <li class="nav-item">
-            <a href="#contactme" class="nav-link">Certifications</a>
+            <a href="#contactme" class="nav-link">Contact Me</a>
         </li>
     </ul>
 </header>
@@ -110,26 +110,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="mt-4 container">
             <div class="row">
                 <div class="col-sm-6" id="skills">
-                    <h3>My Skills</h3>
-                    <?php foreach ($skills as $skill):?>
+                    <?php if($skills){?><h3>My Skills</h3><?php }?>
+
                     <ul>
+                        <?php foreach ($skills as $skill):?>
                         <li><?=$skill['description']?></li>
+                        <?php endforeach;?>
                     </ul>
-                    <?php endforeach;?>
+
                 </div>
 
                 <div class="col-sm-6" id="languages">
-                    <h3>Languages</h3>
+                    <?php if($languages){?><h3>Languages</h3><?php }?>
                     <ul>
                         <?php foreach ($languages as $lang):?>
                         <li><?=$lang['name']?> - <?=$lang['level']?></li>
+                        <?php endforeach;?>
                     </ul>
-                    <?php endforeach;?>
+
                 </div>
             </div>
         </div>
         <div class="mt-4 container bg-terciary" id="technologies">
-            <h3 class="text-center">My Technologies</h3>
+            <?php if($techs){?><h3 class="text-center">My Technologies</h3><?php }?>
             <div class="accordion" id="accordionExample">
                 <?php foreach ($techs as $tec):?>
                 <div class="accordion-item">
@@ -153,7 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container">
         <div class="row">
             <div class="mt-8 col-sm-12" id="education">
-                <h3 class="d-flex justify-content-center">Education</h3>
+                <?php if($education){?><h3 class="d-flex justify-content-center">Education</h3><?php }?>
                 <div class="timeline-main">
                     <ul class="stepper stepper-vertical timeline timeline-animated pl-0">
                         <?php foreach ($education as $row):?>
@@ -181,7 +184,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="row">
             <div class="my-margin-from-form mt-8 col-lg-12" id="certs">
                 <h1 class="d-flex justify-content-center">
-                    <strong>Certifications</strong>
+                    <?php if($certs){?><strong>Certifications</strong><?php }?>
                 </h1>
             </div>
         </div>

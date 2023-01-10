@@ -13,7 +13,7 @@ require "../utils/templates.php";
     <h2>Dashboard</h2>
     <p>Hello to my CMS!</p>
 </div>
-    <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+    <div class="container" id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
 
 <?=template_footer()?>
 <?php else:

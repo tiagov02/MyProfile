@@ -100,11 +100,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <span class="invalid-feedback"><?php echo $username_err; ?></span>
             <!--PWD-->
             <label for="password">Password</label>
-            <input type="text" name="password" placeholder="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+            <input type="password" name="password" placeholder="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $password_err; ?></span>
             <!--CONF PQD-->
             <label for="confirm_password">Password</label>
-            <input type="text" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+            <input type="password" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
             <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             <label for="role">Select the role</label>
             <select class="form-select" aria-label="Default select example" name="role" required>

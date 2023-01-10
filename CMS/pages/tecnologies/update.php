@@ -82,9 +82,7 @@ if (isset($_GET['id'])) {
                         <label class="custom-file-label" for="myfile" data-browse="Procurar fotografia">Do upload the new image</label>
                         <input type="file" class="form-control" id="myfile" name="myfile" accept="image/*">
                         <label for="description">Description</label>
-                        <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10">
-                            <?=$technologie['description']?>
-                        </textarea>
+                        <textarea name="description" placeholder="I worked..." id="description" class="form-control" rows="6" cols="10"><?=$technologie['description']?></textarea>
                         <button type="submit" class="btn btn-primary my-4">Submit</button>
                     </textarea>
                         <button type="submit" class="btn btn-primary my-4">Submit</button>

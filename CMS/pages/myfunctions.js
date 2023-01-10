@@ -14,7 +14,7 @@ function getData(){
         var data = google.visualization.arrayToDataTable(final);
 
         var options = {
-            title:'Acesses'
+            title:'Did you now how many diferent devices acess your page?'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('myChart'));

@@ -63,11 +63,11 @@ unset($pdo);
         <label><?=$user['username']?></label>
         <!--PWD-->
         <label for="password">Password</label>
-        <input type="text" name="password" placeholder="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+        <input type="password" name="password" placeholder="password" id="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
         <span class="invalid-feedback"><?php echo $password_err; ?></span>
         <!--CONF PQD-->
         <label for="confirm_password">Password</label>
-        <input type="text" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+        <input type="password" name="confirm_password" placeholder="confirm password" id="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
         <button type="submit" class="btn btn-primary my-4">Submit</button>
     </form>
