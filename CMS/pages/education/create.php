@@ -33,7 +33,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] && $_SESSION['role'] ==
 
     <?=template_header('Education');?>
         <div class="form-group mx-5 my-5">
-            <h2>Create language</h2>
+            <h2>Create Education</h2>
             <form action="create.php" method="post">
                 <label for="place">Place</label>
                 <input type="text" name="place" placeholder="Viana do Castelo" id="name" class="form-control">

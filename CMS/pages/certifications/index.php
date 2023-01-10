@@ -37,8 +37,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
-                    <th scope="col">File Path</th>
-                    <th scope="col">Description</th>
+
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -52,9 +51,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                         <td><?=$row['description']?></td>
                         <td class="actions">
                             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaldelete<?=$row['id']?>">
-                                <i class="bi bi-trash"></i>
+                                <i class="bi bi-pencil-square"></i>
                             </button>
-                            <a href="delete.php?id=<?=$row['id']?>" ><i class="bi bi-trash"></i></a>
+                            <a href="update.php?id=<?=$row['id']?>"><i class="bi bi-pencil-square"></i></a>
                         </td>
                         <!-- Modal -->
                         <div class="modal fade" id="modaldelete<?=$row['id']?>" tabindex="-1" aria-labelledby="delete<?=$row['id']?>" aria-hidden="true">
@@ -79,7 +78,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ):
                 <?php endforeach; ?>
                 </tbody>
             </table>
-            <a href="./create.php" class="btn btn-primary">Create a Language</a>
+            <a href="./create.php" class="btn btn-primary">Create Certification</a>
 
         <?php else:?>
             <strong><div class="empty-text">There are no records in education try <a href="create.php">add</a> one</div></strong>

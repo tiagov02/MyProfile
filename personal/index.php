@@ -141,7 +141,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div id="collapse<?=$tec['id']?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$tec['id']?>" data-bs-parent="#accordionExample" style="">
                         <div class="accordion-body">
                             <div class="row">
-                                <div class="col-2"><img src="../files/<?=$tec['filename']?>" alt="<?=$tec['description']?>"></div>
+                                <div class="col-2"><img class="img-fluid" src="../files/techs/<?=$tec['filename']?>" alt="<?=$tec['description']?>"></div>
                                 <div class="col-10"><?=$tec['description']?></div>
                             </div>
                         </div>

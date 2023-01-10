@@ -22,7 +22,7 @@ if(isset($_GET['id'])){
 
                     //Validate if the type is an image
                     if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/gif' || $mimetype == 'image/png') {
-                        if (move_uploaded_file($tempname, "../../../files/aboutme/" . $filename)) {
+                        if (move_uploaded_file($tempname, "../../../files/certifications/" . $filename)) {
                             $msg = "Image uploaded successfully";
                             $stmt = $pdo->prepare('UPDATE certifications SET imagepath=?, description=?, title=? WHERE id=?');
                             $stmt->execute([$filename, $description, $title,$_GET['id']]);

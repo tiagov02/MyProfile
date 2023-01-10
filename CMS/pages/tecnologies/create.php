@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 //Validate if the type is an image
                 if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/gif' || $mimetype == 'image/png') {
-                    if (move_uploaded_file($tempname, "../../../files/certifications/" . $filename)) {
+                    if (move_uploaded_file($tempname, "../../../files/techs/" . $filename)) {
                         $msg = "Image uploaded successfully";
                         $stmt = $pdo->prepare('insert into technologies (name, description) values (?, ?)');
 

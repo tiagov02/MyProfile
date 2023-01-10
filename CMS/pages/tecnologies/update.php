@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
                     $mimetype = $_FILES["myfile"]["type"];
 
                     if ($mimetype == 'image/jpg' || $mimetype == 'image/jpeg' || $mimetype == 'image/gif' || $mimetype == 'image/png') {
-                        if (move_uploaded_file($tempname, "../../../files/certifications/" . $filename)) {
+                        if (move_uploaded_file($tempname, "../../../files/techs/" . $filename)) {
                             $msg = "Image uploaded successfully";
                             $stmt = $pdo->prepare('UPDATE technologies SET name=?, description=?, filename=? WHERE id = ?');
 
