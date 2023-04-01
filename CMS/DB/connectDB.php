@@ -11,7 +11,8 @@ function pdo_connect_mysql() {
     }
     catch (PDOException $exception)
     {
-        exit('Failed to connect to database!');
+
+        exit($exception->getMessage());
     }
 }
 ?>
