@@ -78,7 +78,7 @@ create table if not exists messages
     rementent  varchar(100)           not null,
     name    varchar(100)           not null,
     message varchar(1000)          not null,
-    date    date default curdate() null,
+    date    date  null,
     state   int                    null,
     constraint messages_id_uindex
     unique (id)
