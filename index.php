@@ -20,6 +20,6 @@ if(!$aboutme){
     $pdo->query("insert into aboutme (id) values (1);");
 }
 
-header("location: ./personal");
+header("location: ./personal"."200 OK");
 
 ?>
