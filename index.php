@@ -3,6 +3,8 @@
 require ("./CMS/DB/connectDB.php");
 //Connect to DB
 $pdo = pdo_connect_mysql();
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
 
 //GET THE DB SCHEMA
 $file = fopen("./CMS/DB/schema.sql","r") or die("Please refresh the page");
@@ -20,6 +22,6 @@ if(!$aboutme){
     $pdo->query("insert into aboutme (id) values (1);");
 }
 
-header("location: ./personal"."200 OK");
+header("location: ./personal");
 
 ?>
